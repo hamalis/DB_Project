@@ -14,11 +14,8 @@ else
 	{
 
 	
-		$gname = $_POST["gname"];
-		$gameszie = $_POST["gameszie"];
-		$usernum = $_POST["usernum"];
+		$cname = $_POST["cname"];
 		$productid = $_POST["productid"];
-		$productdesc = mysql_real_escape_string($_POST["productdesc"]);
 		$price = mysql_real_escape_string($_POST["productprice"]);
 		$image= addslashes($_FILES['image']['tmp_name']);
 		$name= addslashes($_FILES['image']['image_name']);
@@ -36,11 +33,11 @@ COMMIT; ";
 		$q = mysql_query($db);*/ 
 		
 		$db = "INSERT INTO product(product_id, product_description, product_name, product_price)"; 
-		$db.= "VALUES('$productid','$productdesc','$gname','$price') " ;
+		$db.= "VALUES('$productid','$cnmae','$cname','$price') " ;
 		$q = mysql_query($db);
 		
-		$db2 = 'INSERT INTO game(game_name,size_of_game, number_of_players,image_name,image,product_id)'; 
-		$db2.= "VALUES('$gname','$gameszie','$usernum','$name','$image','$productid')" ;
+		$db2 = 'INSERT INTO console(console_type,image_name,image,product_id)'; 
+		$db2.= "VALUES('$cname','$name','$image','$productid')" ;
 		$q2 = mysql_query($db2);
 		
 		
