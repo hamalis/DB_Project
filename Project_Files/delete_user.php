@@ -1,3 +1,52 @@
+<?php       
+session_start();
+if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
+      // redirect to your login page
+      exit();
+}
+
+$username = $_SESSION['login_user'];
+
+// serve the page normally.
+
+
+$localhost = 'localhost';
+$dusername = 'root';
+$dpassword = 'root';
+$database = 'gp';
+$connection = mysql_connect($localhost , $dusername , $dpassword);
+mysql_select_db($database, $connection);
+//if ($connection->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//} 
+
+
+if (isset($_GET['Delete']))
+{
+	
+	$user = $_GET['Delete'];
+	
+	
+	$que =  " DELETE FROM `customer`  WHERE customer_username = '$user'";
+ 
+ $record = mysql_query($que) or print(mysql_error());
+   
+
+//echo $record;
+echo "<meta http-equiv='refresh' content = '0;url=editcustomer.php'>"; 
+
+
+}
+
+//iterate over all the rows
+if($record === FALSE){
+ 	
+	echo "User ". $user;
+echo $record;
+
+}
+?> 
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -124,6 +173,11 @@ span.psw {
     }
 }
 </style>
+ 
+
+
+
+ 
 </head>
 <body>
 <!-- Page -->
@@ -133,7 +187,7 @@ span.psw {
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.php">home</a></li>
+        <li class="home"><a href="admin.php">home</a></li>
         <li><a href="pc.php">pc</a></li>
         <li><a href="xbox.php">xbox</a></li>
         <li><a href="360.php">360</a></li>
@@ -149,7 +203,7 @@ span.psw {
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.php">game<span>portal</span></a></h1>
+      <h1><a href="admin.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -178,9 +232,9 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.php">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Review</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href=" ">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -210,35 +264,13 @@ span.psw {
           <div class="col-articles articles">
             <div class="cl">&nbsp;</div>
             
- 			 <?php 
-		$localhost = 'localhost';
-		$dusername = 'root';
-		$dpassword = 'root';
-		$database = 'gp';
-		$connect = mysql_connect($localhost , $dusername , $dpassword);
-		mysql_select_db($database, $connect);
-?>
-<?php
-  	
-                $query = "SELECT * FROM game, product";  
-                $result = mysql_query($query);  
-                if(mysql_num_rows($result) > 0)  
-                {  
-                     while($row = mysql_fetch_array($result))  
-                     {  
-  
-	?>	
+ 			 
+	
 			<div class="article">
 			   
-              <div class="image"> <a href="#"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href="#"><?php echo $row["game_name"]; ?></a></h4>
-			  <p><?php echo $row["product_description"]; ?></p>
-              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+                
             </div>
-			 <?php  
-                     }  
-                }  
-                ?>	
+			 
 			
 			
 			
@@ -273,53 +305,16 @@ span.psw {
       <!-- Sign In -->
 
       <div id="sign" class="block">
-        <div class="block-bot">
-          <div class="block-cnt">
-            <div class="cl">&nbsp;</div>
-            <a onclick="document.getElementById('id01').style.display='block'" class="button button-left">sign in</a> <a href="newAccount.php" class="button button-right">create account</a>
-			<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="php/login.php" method="post" >
-  <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-        
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-            <div class="cl">&nbsp;</div>
-            <p class="center">&nbsp;&nbsp;<a href=" ">Forgot Password?</a></p>
-          </div>
-        </div>
-      </div>
-
+      <!-- <div class="cl">&nbsp;</div> --> 
+			<div class="card">
+			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+			  <div class="container">
+				<h3 style = "text-align: center;"><b><?php  echo $_SESSION['login_user'];?></b></h3> 
+				<p align="center"><?php echo "<a href = 'customeredit.php?Edit=$username'>Edit</a>"; ?> 
+	|	<a href = "LogoutPage.php">Sign Out</a></p> 
+			  </div>
+			</div>
+			</div>
       <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">

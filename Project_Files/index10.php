@@ -1,4 +1,5 @@
 
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -133,7 +134,7 @@ span.psw {
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.php">home</a></li>
+        <li class="home"><a href="index.html">home</a></li>
         <li><a href="pc.php">pc</a></li>
         <li><a href="xbox.php">xbox</a></li>
         <li><a href="360.php">360</a></li>
@@ -149,7 +150,7 @@ span.psw {
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.php">game<span>portal</span></a></h1>
+      <h1><a href="index.html">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -178,9 +179,9 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index.html">Review</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -199,57 +200,142 @@ span.psw {
       <div id="content">
         <div class="block">
           <div class="block-bot">
-             <div class="block">
-        <div class="block-bot">
-          <div class="head">
-            <div class="head-cnt">  
-              <h3>All Games</h3>
-              <div class="cl">&nbsp;</div>
-            </div>
-          </div>
-          <div class="col-articles articles">
-            <div class="cl">&nbsp;</div>
-            
- 			 <?php 
+            <div class="block-cnt">
+              <div id="slider">
+                <div class="buttons"> <span class="prev">prev</span> <span class="next">next</span> </div>
+                <div class="holder">
+                  <div class="frame">&nbsp;</div>
+                  <div class="content">
+                    <ul>
+					 <?php
+  
 		$localhost = 'localhost';
 		$dusername = 'root';
 		$dpassword = 'root';
 		$database = 'gp';
 		$connect = mysql_connect($localhost , $dusername , $dpassword);
 		mysql_select_db($database, $connect);
-?>
-<?php
   	
-                $query = "SELECT * FROM game, product";  
-                $result = mysql_query($query);  
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id ";  
+                  $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
+                     
   
-	?>	
-			<div class="article">
-			   
-              <div class="image"> <a href="#"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href="#"><?php echo $row["game_name"]; ?></a></h4>
-			  <p><?php echo $row["product_description"]; ?></p>
-              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+	?>
+                    <li class="fragment">
+                      <div class="image">
+					 
+                      <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+                  </div>
+                  <div class="cnt">
+                    <div class="cl">&nbsp;</div>
+                    <div class="side-a">
+                      <h3 Style="color: #000;font-weight: bold; font-size: 14px;"><?php echo "".$row['game_name'].""; ?></h3>
+                      <ul class="rating">
+                        <li><span class="star full-star">&nbsp;</span></li>
+                        <li><span class="star full-star">&nbsp;</span></li>
+                        <li><span class="star full-star">&nbsp;</span></li>
+                        <li><span class="star full-star">&nbsp;</span></li>
+                        <li><span class="star empty-star">&nbsp;</span></li>
+                        <li><span class="votes">1.456 votes</span></li>
+                      </ul>
+                    </div>
+                    <div class="side-b">
+                      <p><?php echo "".$row['product_description'].""; ?></p>
+                    </div>
+                    <div class="cl">&nbsp;</div>
+                  </div>
+                  </li>
+				<?php }} ?>
+                   
+                </div>
+              </div>
             </div>
-			 <?php  
-                     }  
-                }  
-                ?>	
-			
-			
-			
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+              <h3>New Consoles</h3>
+              <div class="cl">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col-articles articles">
+            <div class="cl">&nbsp;</div>
+            	 <?php
+  
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+  	
+                $query = "SELECT * FROM console c, product p WHERE c.product_id = p.product_id ";  
+                  $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+                     
+  
+	?>
+			<div class="article">
+              <div class="image"> <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+			</div>
+              <h4> <?php echo "".$row['console_type'].""; ?></h4>
+             </div>
+             <?php }} ?>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
       </div>
+      <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+              <h3>New Accessory</h3>
+              <div class="cl">&nbsp;</div>
+            </div>
+          </div>
+          <div class="row-articles articles">
+            <div class="cl">&nbsp;</div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img7.jpg" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img8.jpg" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT 3</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article last-article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img9.jpg" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">STARCRAF II</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="cl">&nbsp;</div>
+          </div>
         </div>
       </div>
-      
-     
     </div>
     <!-- / Content -->
     <!--  -->
@@ -271,13 +357,12 @@ span.psw {
       </div>
       <!-- / Search -->
       <!-- Sign In -->
-
-      <div id="sign" class="block">
+      <div id="sign" class="block" >
         <div class="block-bot">
           <div class="block-cnt">
-            <div class="cl">&nbsp;</div>
+            <div class="cl" >&nbsp;</div>
             <a onclick="document.getElementById('id01').style.display='block'" class="button button-left">sign in</a> <a href="newAccount.php" class="button button-right">create account</a>
-			<div id="id01" class="modal">
+			<div id="id01" class="modal" >
   
   <form class="modal-content animate" action="php/login.php" method="post" >
   <div class="imgcontainer">
@@ -471,9 +556,11 @@ window.onclick = function(event) {
       <p class="copy">&copy; gameportal.com. Design by Salman</p>
     </div>
     <!-- / Footer -->
+	
   </div>
 </div>
 <!-- / Main -->
 </div>
 <!-- / Page -->
  </html>
+ 

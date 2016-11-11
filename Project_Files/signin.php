@@ -98,7 +98,7 @@
             <li class="first active first-active"><a href="index.html">Review</a><span class="sep">&nbsp;</span></li>
             
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href=" ">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>

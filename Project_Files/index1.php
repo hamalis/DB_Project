@@ -96,7 +96,7 @@ img {
           <ul>
             <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -306,9 +306,8 @@ img {
       </div>
       <!-- / Search -->
       <!-- Sign In -->
-      <div id="sign" class="block">
-         
-            <!-- <div class="cl">&nbsp;</div> --> 
+     <div id="sign" class="block">
+      <!-- <div class="cl">&nbsp;</div> --> 
 			<div class="card">
 			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
 			  <div class="container">
@@ -317,12 +316,9 @@ img {
 	|	<a href = "LogoutPage.php">Sign Out</a></p> 
 			  </div>
 			</div>
-		     <!--<li>Welcome </li>
-            <div class="cl">&nbsp;</div>
-            <p class="center">&nbsp;&nbsp; <li><a href = "LogoutPage.php">Sign Out</a></li> --> 
-           
-      </div>
+			</div>
       <!-- / Sign In -->
+	  
       <div class="block">
         <div class="block-bot">
           <div class="head">

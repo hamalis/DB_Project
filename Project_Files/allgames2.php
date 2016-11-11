@@ -9,6 +9,7 @@ if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
 $username = $_SESSION['login_user'];
 
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,6 +19,122 @@ $username = $_SESSION['login_user'];
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
+<style>
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
 </head>
 <body>
 <!-- Page -->
@@ -34,6 +151,9 @@ $username = $_SESSION['login_user'];
         <li><a href="wii.php">wii</a></li>
         <li><a href="ps4.php">ps4</a></li>
         <li><a href="ps3.php">ps3</a></li>
+		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
+  padding: 0;
+  margin: 0 auto; " src="white-cart.png" ></a></li>
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -70,8 +190,8 @@ $username = $_SESSION['login_user'];
           <div class="cl">&nbsp;</div>
           <ul>
             <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -86,64 +206,230 @@ $username = $_SESSION['login_user'];
   <div id="main">
     <div id="main-bot">
       <div class="cl">&nbsp;</div>
-	  
-	  
-	  
-	  
-	  <div>
-	  <br>
-	  <h1 align=center> All Games </h1>
-	  
-	  
-	  <br />  
-	  <?php 
+      <!-- Content -->
+      <div id="content">
+        <div class="block">
+          <div class="block-bot">
+             <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt">  
+              <h3>All Games</h3>
+              <div class="cl">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col-articles articles">
+            <div class="cl">&nbsp;</div>
+            
+ 			 <?php 
 		$localhost = 'localhost';
 		$dusername = 'root';
 		$dpassword = 'root';
 		$database = 'gp';
 		$connect = mysql_connect($localhost , $dusername , $dpassword);
 		mysql_select_db($database, $connect);
-
-	  ?>
-           <div class="container" style="width:700px;">  
-                 <?php  
-                $query = "SELECT * FROM game,product";  
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id";  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
-                ?>  
-                <div class="col-md-4">  
-                     <form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">  
-                          <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">  
-                                <?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?>
-                                <h4 class="text-info"><?php echo $row["game_name"]; ?></h4>  
-                               <h4 class="text-danger">$ <?php echo $row["product_price"]; ?></h4>  
-                               <input type="text" name="quantity" class="form-control" value="1" />  
-                               <input type="hidden" name="hidden_name" value="<?php echo $row["game_name"]; ?>" />  
-                               <input type="hidden" name="hidden_price" value="<?php echo $row["product_price"]; ?>" />  
-                               <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />  
-                          </div>  
-                     </form>  
-                </div>  
-                <?php  
+  
+	?>	
+			<div class="article">
+			   
+              <div class="image"> <a href="#"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4><a href="http://all-free-download.com/free-website-templates/"><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+            </div>
+			 <?php  
                      }  
-                }  
-                ?>  
-				
-	  </br>
-	  </div>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  <!-- Footer -->
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+echo '<h1 style="text-align:center"> Sorry!! </h1>';
+echo '<br>';
+echo '<br>';
+echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			
+			
+            <div class="cl">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+      
+     
+    </div>
+    <!-- / Content -->
+    <!--  -->
+    <div id="sidebar">
+      <!-- Search -->
+      <div id="search" class="block">
+        <div class="block-bot">
+          <div class="block-cnt">
+            <form action="search.php" method="post">
+              <div class="cl">&nbsp;</div>
+              <div class="fieldplace">
+                <input type="text" class="field" value="Search" title="Search" />
+              </div>
+              <input type="submit" class="button" value="GO" />
+              <div class="cl">&nbsp;</div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- / Search -->
+      <!-- Sign In -->
+
+      <div id="sign" class="block">
+      <!-- <div class="cl">&nbsp;</div> --> 
+			<div class="card">
+			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+			  <div class="container">
+				<h3 style = "text-align: center;"><b><?php  echo $_SESSION['login_user'];?></b></h3> 
+				<p align="center"><?php echo "<a href = 'customeredit.php?Edit=$username'>Edit</a>"; ?> 
+	|	<a href = "LogoutPage.php">Sign Out</a></p> 
+			  </div>
+			</div>
+			</div>
+      <!-- / Sign In -->
+      <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt">
+              <h3>Top Games</h3>
+            </div>
+          </div>
+          <div class="image-articles articles">
+            <div class="cl">&nbsp;</div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="cl">&nbsp;</div>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <div class="cl">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt">
+              <h3>Top Videos</h3>
+            </div>
+          </div>
+          <div class="image-articles articles">
+            <div class="cl">&nbsp;</div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="article">
+              <div class="cl">&nbsp;</div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="cnt">
+                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+              </div>
+              <div class="cl">&nbsp;</div>
+            </div>
+            <div class="cl">&nbsp;</div>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <div class="cl">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-bot">
+          <div class="head">
+            <div class="head-cnt">
+              <h3>Latest Articles</h3>
+            </div>
+          </div>
+          <div class="text-articles articles">
+            <div class="article">
+              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
+              <small class="date">21.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+            </div>
+            <div class="article">
+              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
+              <small class="date">20.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+            </div>
+            <div class="article">
+              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
+              <small class="date">19.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+            </div>
+            <div class="article">
+              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
+              <small class="date">15.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+            </div>
+            <div class="cl">&nbsp;</div>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <div class="cl">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Sidebar -->
+    <div class="cl">&nbsp;</div>
+    <!-- Footer -->
     <div id="footer">
       <div class="navs">
         <div class="navs-bot">
@@ -169,7 +455,7 @@ $username = $_SESSION['login_user'];
           <div class="cl">&nbsp;</div>
         </div>
       </div>
-      <p class="copy">&copy; gameportal.com. Design by Salman, Anthony, Dyjung</p>
+      <p class="copy">&copy; gameportal.com. Design by Salman</p>
     </div>
     <!-- / Footer -->
   </div>

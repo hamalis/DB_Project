@@ -74,8 +74,8 @@ $username = $_SESSION['login_user'];
           <div class="cl">&nbsp;</div>
           <ul>
             <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -101,8 +101,10 @@ $username = $_SESSION['login_user'];
     <h3 class="panel-title">Customers</h3>
   </div>
   <div class="panel-body">
-<a href='editcustomer.php' ><img src="css/images/Customers_customer_user_male_man_people_light.png" style="  align-items: center; justify-content:center; width:10%" ></a> 
+<p align="center"> <img src="css/images/Customers_customer_user_male_man_people_light.png" style="  align-items: center; justify-content:center; width:10%" >  
   </div>
+   <p align="center"> <a href="editcustomer.php" >Delete Customer</a></p>
+
 </div>
  
 	<div class="panel panel-primary">
@@ -110,15 +112,19 @@ $username = $_SESSION['login_user'];
     <h3 class="panel-title">Games</h3>
   </div>
   <div class="panel-body">
-<a href="addgame.php" > <img src="css/images/mario_256.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>   </div>
-</div>
+<p align="center"><img src="css/images/mario_256.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>     </div>
+ <p align="center"> <a href="addgame.php" >Add Game</a> 	|	 <a href="admin_games.php" >Delete Game </a></p>
+   </div>
+ 
 
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Consoles</h3>
   </div>
   <div class="panel-body">
-<a href="#" > <img src="css/images/ps4_and_ps4_controller_512.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>  </div>
+<p align="center"><a href="#" > <img src="css/images/ps4_and_ps4_controller_512.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>  
+</div>
+   <p align="center">  <a href="addconsole.php" >Add Console</a> 	|	 <a href="admin_console.php" >Delete Console</a></p>
 </div>
 
 <div class="panel panel-warning">
@@ -126,7 +132,10 @@ $username = $_SESSION['login_user'];
     <h3 class="panel-title">Accessory</h3>
   </div>
   <div class="panel-body">
-<a href="#" > <img src="css/images/ps4-overview-lead-image-ds4-01-eu-06sep16.png" style="  align-items: center; justify-content:center; width:10%" >  </div>
+<p align="center"><a href="#" > <img src="css/images/ps4-overview-lead-image-ds4-01-eu-06sep16.png" style="  align-items: center; justify-content:center; width:10%" > 
+ </div>
+    <p align="center">  <a href="addaccessory.php" >Add Accessory</a> 	|	 <a href="admin_accessory.php" >Delete Accessory</a></p>
+
 </div>
 	  
           </div>

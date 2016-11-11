@@ -180,7 +180,7 @@ span.psw {
           <ul>
             <li class="first active first-active"><a href="index.php">Review</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href=" ">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -202,8 +202,8 @@ span.psw {
              <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt">  
-              <h3>All Games</h3>
+            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+              <h3>Top Reviews</h3>
               <div class="cl">&nbsp;</div>
             </div>
           </div>
@@ -231,8 +231,7 @@ span.psw {
 			<div class="article">
 			   
               <div class="image"> <a href="#"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href="#"><?php echo $row["game_name"]; ?></a></h4>
-			  <p><?php echo $row["product_description"]; ?></p>
+              <h4><a href="http://all-free-download.com/free-website-templates/"><?php echo $row["game_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
             </div>
 			 <?php  
@@ -271,7 +270,6 @@ span.psw {
       </div>
       <!-- / Search -->
       <!-- Sign In -->
-
       <div id="sign" class="block">
         <div class="block-bot">
           <div class="block-cnt">

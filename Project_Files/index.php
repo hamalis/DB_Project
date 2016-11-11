@@ -133,7 +133,7 @@ span.psw {
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.html">home</a></li>
+        <li class="home"><a href="index.php">home</a></li>
         <li><a href="pc.php">pc</a></li>
         <li><a href="xbox.php">xbox</a></li>
         <li><a href="360.php">360</a></li>
@@ -149,7 +149,7 @@ span.psw {
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.html">game<span>portal</span></a></h1>
+      <h1><a href="index.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -178,9 +178,9 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.html">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index.php">Review</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>

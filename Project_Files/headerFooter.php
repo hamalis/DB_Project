@@ -16,7 +16,7 @@
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.html">home</a></li>
+        <li class="home"><a href="index.php">home</a></li>
         <li><a href=" ">pc</a></li>
         <li><a href=" ">xbox</a></li>
         <li><a href=" ">360</a></li>
@@ -29,7 +29,7 @@
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.html">game<span>portal</span></a></h1>
+      <h1><a href="index.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -59,7 +59,7 @@
           <div class="cl">&nbsp;</div>
           <ul>
             <li class="first active first-active"><a href="http://all-free-download.com/free-website-templates/">Review</a><span class="sep">&nbsp;</span></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">Previews </a><span class="sep">&nbsp;</span></li>
+            <li><a href="index.php">Previews </a><span class="sep">&nbsp;</span></li>
             <li><a href="http://all-free-download.com/free-website-templates/">New Releases</a><span class="sep">&nbsp;</span></li>
             <li><a href="http://all-free-download.com/free-website-templates/">Top Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="http://all-free-download.com/free-website-templates/">All Games</a><span class="sep">&nbsp;</span></li>
