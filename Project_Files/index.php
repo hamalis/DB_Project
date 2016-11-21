@@ -1,4 +1,5 @@
 
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +14,7 @@
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 4px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -140,9 +141,7 @@ span.psw {
         <li><a href="wii.php">wii</a></li>
         <li><a href="ps4.php">ps4</a></li>
         <li><a href="ps3.php">ps3</a></li>
-		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
-  padding: 0;
-  margin: 0 auto; " src="white-cart.png" ></a></li>
+ 
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -158,14 +157,14 @@ span.psw {
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
+           <!-- <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li> --> 
           </ul>
         </div>
       </div>
@@ -178,11 +177,11 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index.php">Main</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames_public.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles_public.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories_public.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -195,7 +194,7 @@ span.psw {
   <div id="main">
     <div id="main-bot">
       <div class="cl">&nbsp;</div>
-      <!-- Content -->
+       <!-- Content -->
       <div id="content">
         <div class="block">
           <div class="block-bot">
@@ -299,70 +298,84 @@ span.psw {
           </div>
         </div>
       </div>
-      <div class="block">
+          <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
-              <h3>Top Reviews</h3>
+            <div class="head-cnt"> <a href="consoles_public.php" class="view-all">view all</a>
+              <h3>New Consoles</h3>
               <div class="cl">&nbsp;</div>
             </div>
           </div>
           <div class="col-articles articles">
             <div class="cl">&nbsp;</div>
-            <div class="article">
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img4.jpg" alt="" /></a> </div>
-              <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-              <p class="console"><strong>PSP3</strong></p>
-            </div>
-            <div class="article">
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img5.jpg" alt="" /></a> </div>
-              <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT 3</a></h4>
-              <p class="console"><strong>PC</strong></p>
-            </div>
-            <div class="article">
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img6.jpg" alt="" /></a> </div>
-              <h4><a href="http://all-free-download.com/free-website-templates/">STARCRAF II</a></h4>
-              <p class="console"><strong>PC</strong></p>
-            </div>
+            	 <?php
+  
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+  	
+                $query = "SELECT * FROM console c, product p WHERE c.product_id = p.product_id ";  
+                  $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+                     
+  
+	?>
+			<div class="article">
+              <div class="image"> <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+			</div>
+              <h4> <?php echo "".$row['console_type'].""; ?></h4>
+             </div>
+             <?php }} ?>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
       </div>
-      <div class="block">
+	  
+     <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
-              <h3>Editor`s Pick</h3>
+            <div class="head-cnt"> <a href="accessories_public.php" class="view-all">view all</a>
+              <h3>New Accessory</h3>
               <div class="cl">&nbsp;</div>
             </div>
           </div>
-          <div class="row-articles articles">
+          <div class="col-articles articles">
             <div class="cl">&nbsp;</div>
-            <div class="article">
-              <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img7.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit </p>
-              </div>
-              <div class="cl">&nbsp;</div>
-            </div>
-            <div class="article">
-              <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img8.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT 3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
-              </div>
-              <div class="cl">&nbsp;</div>
-            </div>
+            	 <?php
+  
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+  	
+                $query = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ";  
+                  $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+                     
+  
+	?>
+			<div class="article">
+              <div class="image"> <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+			</div>
+              <h4> <?php echo "".$row['accessory_name'].""; ?></h4>
+             </div>
+             <?php }} ?>
+
+             
             <div class="article last-article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img9.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">STARCRAF II</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
-              </div>
+               
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
@@ -380,7 +393,7 @@ span.psw {
             <form action="search.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input type="text" class="field" value="Search" title="Search" />
+                <input name="search" id ="search" type="text"  class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>
@@ -390,12 +403,12 @@ span.psw {
       </div>
       <!-- / Search -->
       <!-- Sign In -->
-      <div id="sign" class="block">
+      <div id="sign" class="block" >
         <div class="block-bot">
           <div class="block-cnt">
-            <div class="cl">&nbsp;</div>
+            <div class="cl" >&nbsp;</div>
             <a onclick="document.getElementById('id01').style.display='block'" class="button button-left">sign in</a> <a href="newAccount.php" class="button button-right">create account</a>
-			<div id="id01" class="modal">
+			<div id="id01" class="modal" >
   
   <form class="modal-content animate" action="php/login.php" method="post" >
   <div class="imgcontainer">
@@ -416,7 +429,7 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <span class="psw"><a href="#">Forgot password?</a></span>
     </div>
   </form>
 </div>
@@ -438,45 +451,45 @@ window.onclick = function(event) {
         </div>
       </div>
 
-      <!-- / Sign In -->
+     <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Games</h3>
+              <h3>Editor`s Pick</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>FIFA 17</h4>
+                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>OVERWATCH</h4>
+                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Red Dead Redemption 2</h4>
+                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <a href="allgames.php" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -485,40 +498,40 @@ window.onclick = function(event) {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Videos</h3>
+              <h3>Coming Soon</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/3max.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>PS4 FINAL FANTASY XV</h4>
+                <p>PlayStation 4 Slim 1TB FINAL FANTASY XV Limited Edition. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/129536brp.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Sniper Ghost Warrior 3</h4>
+                <p>Sniper Ghost Warrior 3 Limited Edition. Pre-order Sniper Ghost Warrior 3 now and receive the single player campaign "The Escape of Lydia" and two unique weapons skins. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/dead-rising-4-box-art-555x725.png" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Dead Rising 4</h4>
+                <p> The ultimate zombie slayer returns home for the holidays!. Frank West returns in an all-new chapter of one of the most popular zombie game franchises of all time. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -566,14 +579,7 @@ window.onclick = function(event) {
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+        
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>
@@ -589,9 +595,11 @@ window.onclick = function(event) {
       <p class="copy">&copy; gameportal.com. Design by Salman</p>
     </div>
     <!-- / Footer -->
+	
   </div>
 </div>
 <!-- / Main -->
 </div>
 <!-- / Page -->
  </html>
+ 

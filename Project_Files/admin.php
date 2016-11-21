@@ -15,10 +15,11 @@ $username = $_SESSION['login_user'];
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/style2.css" type="text/css" media="all" />
-
+ 
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
+
 </head>
 <body>
 <!-- Page -->
@@ -53,14 +54,7 @@ $username = $_SESSION['login_user'];
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            
           </ul>
         </div>
       </div>
@@ -74,10 +68,10 @@ $username = $_SESSION['login_user'];
           <div class="cl">&nbsp;</div>
           <ul>
             <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -90,6 +84,7 @@ $username = $_SESSION['login_user'];
   <div id="main">
     <div id="main-bot">
       <div class="cl">&nbsp;</div>
+	  
       <!-- Content -->
       <div id="content">
         <div class="block">
@@ -103,7 +98,9 @@ $username = $_SESSION['login_user'];
   <div class="panel-body">
 <p align="center"> <img src="css/images/Customers_customer_user_male_man_people_light.png" style="  align-items: center; justify-content:center; width:10%" >  
   </div>
-   <p align="center"> <a href="editcustomer.php" >Delete Customer</a></p>
+   <p align="center"> <a href="editcustomer.php" >Delete Customer</a> | 
+    <a href="customer_history.php" >Customers Orders report</a>   
+   </p>
 
 </div>
  
@@ -122,7 +119,7 @@ $username = $_SESSION['login_user'];
     <h3 class="panel-title">Consoles</h3>
   </div>
   <div class="panel-body">
-<p align="center"><a href="#" > <img src="css/images/ps4_and_ps4_controller_512.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>  
+<p align="center"> <img src="css/images/ps4_and_ps4_controller_512.png" style="  align-items: center; justify-content:center; width:10%" > </img>   
 </div>
    <p align="center">  <a href="addconsole.php" >Add Console</a> 	|	 <a href="admin_console.php" >Delete Console</a></p>
 </div>
@@ -132,19 +129,25 @@ $username = $_SESSION['login_user'];
     <h3 class="panel-title">Accessory</h3>
   </div>
   <div class="panel-body">
-<p align="center"><a href="#" > <img src="css/images/ps4-overview-lead-image-ds4-01-eu-06sep16.png" style="  align-items: center; justify-content:center; width:10%" > 
+<p align="center">  <img src="css/images/ps4-overview-lead-image-ds4-01-eu-06sep16.png" style="  align-items: center; justify-content:center; width:10%" > 
  </div>
     <p align="center">  <a href="addaccessory.php" >Add Accessory</a> 	|	 <a href="admin_accessory.php" >Delete Accessory</a></p>
 
 </div>
 	  
+	  	  
+	  
           </div>
         </div>
+		
       </div>
+
     </div>
+	
     <!-- / Content -->
     <!--  -->
     <div id="sidebar">
+	
       <!-- Search -->
       <div id="search" class="block">
         <div class="block-bot">
@@ -164,52 +167,52 @@ $username = $_SESSION['login_user'];
       <!-- Sign In -->
       <div id="sign" class="block">
         <div class="card">
-			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+			  <img src="img_avatar1.png" alt="Avatar" style="width:100%">
 			  <div class="container">
 				<h4><b><?php  echo $_SESSION['login_user'];?></b></h4> 
 				<p><a href = "LogoutPage.php">Sign Out</a></p> 
 			  </div>
 			</div>
       </div>
-      <!-- / Sign In -->
+       <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Games</h3>
+              <h3>Games</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>FIFA 17</h4>
+                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>OVERWATCH</h4>
+                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Red Dead Redemption 2</h4>
+                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <a href="allgames.php" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>

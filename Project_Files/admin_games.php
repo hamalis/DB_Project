@@ -19,6 +19,54 @@ $username = $_SESSION['login_user'];
 <title>GamePortal</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<style> 
+ element.style {
+}
+.btn {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.btn-danger {
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a {
+    color: #4582ec;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+ 
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+  
+ </style>
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
@@ -137,11 +185,18 @@ span.psw {
        width: 100%;
     }
 }
+
+
+
 </style>
  
 
 
-
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
  
 </head>
 <body>
@@ -159,9 +214,7 @@ span.psw {
         <li><a href="wii.php">wii</a></li>
         <li><a href="ps4.php">ps4</a></li>
         <li><a href="ps3.php">ps3</a></li>
-		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
-  padding: 0;
-  margin: 0 auto; " src="white-cart.png" ></a></li>
+	 
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -177,14 +230,7 @@ span.psw {
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+             
           </ul>
         </div>
       </div>
@@ -197,11 +243,11 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="admin.php">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -252,7 +298,9 @@ span.psw {
 			   
               <div class="image"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
               <h4 style="text-align:center;"><?php echo $row["game_name"]; ?></h4>
-               <p align="center" style="color:red"><?php echo "<a href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>     
+               <br>
+			   <p align="center" style="color:red"><?php echo "<a class='btn btn-danger' onclick='return checkDelete()' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
+				 		   
             </div>
 			 <?php  
                      }  
@@ -308,7 +356,7 @@ echo '<br>';
       <div id="sign" class="block">
       <!-- <div class="cl">&nbsp;</div> --> 
 			<div class="card">
-			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+			  <img src="img_avatar1.png" alt="Avatar" style="width:100%">
 			  <div class="container">
 				<h3 style = "text-align: center;"><b><?php  echo $_SESSION['login_user'];?></b></h3> 
 				<p align="center"><?php echo "<a href = 'customeredit.php?Edit=$username'>Edit</a>"; ?> 
@@ -444,14 +492,7 @@ echo '<br>';
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+             
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>

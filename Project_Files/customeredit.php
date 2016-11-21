@@ -18,7 +18,7 @@ $username = $_SESSION['login_user'];
 
 // serve the page normally.
 
-
+ 
 $localhost = 'localhost';
 $dusername = 'root';
 $dpassword = 'root';
@@ -35,28 +35,28 @@ mysql_select_db($database, $connection);
 	$row = mysql_fetch_array($que);
  
 }
- if (isset($_POST['user']))
+
+ if (isset($_POST['username']))
 {
- 	
-	$user = $_POST['username'];
+
+	$user = mysql_real_escape_string($_POST['username']);
 	$password = mysql_real_escape_string($_POST['password']);
-	$email = $_POST['email'];
-	$fname = $_POST['fname'];
-	$lname = $_POST['lname'];
-	$answer = $_POST['answer'];
-	$question = $_POST['question'];
-	$street = $_POST['streetname'];
-	$housenum = $_POST['housenum'];
-	$zip = $_POST['zip'];		
-	$city = $_POST['city'];
-	$state = $_POST['state'];
+	$email = mysql_real_escape_string($_POST['email']);
+	$fname = mysql_real_escape_string($_POST['fname']);
+	$lname = mysql_real_escape_string($_POST['lname']);
+	$answer = mysql_real_escape_string($_POST['answer']);
+	$question = mysql_real_escape_string($_POST['question']);
+	$street = mysql_real_escape_string($_POST['streetname']);
+	$housenum = mysql_real_escape_string($_POST['housenum']);
+	$zip = mysql_real_escape_string($_POST['zip']);		
+	$city = mysql_real_escape_string($_POST['city']);
+	$state = mysql_real_escape_string($_POST['state']);
 	
 	
-	$que1 =  "UPDATE customer SET customer_username ='$user', password ='$password', email_address ='$email', security_question ='$question', security_answer ='$answer',first_name = '$fname', last_name ='$lname', street_name ='$street', house_number ='$housenum', zip_code ='$zip' , city ='$city', state='$state' WHERE customer_username = '$user'";
+	$que1 =  "UPDATE customer SET customer_username ='$user', password ='$password', email_address ='$email', security_questions ='$question', security_answer ='$answer',first_name = '$fname', last_name ='$lname', street_name ='$street', house_number ='$housenum', zip_code ='$zip' , city ='$city', state='$state' WHERE customer_username = '$user'";
 	$record = mysql_query($que1) or print(mysql_error());
 	echo "<meta http-equiv='refresh' content = '0;url=index1.php'>";
-
-
+ 
 //iterate over all the rows
 if($record === FALSE)
 
@@ -150,14 +150,8 @@ echo $record;
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+             <li><?php echo "<a href = 'customeredit.php?Edit=$username'>Profile</a>";?> </li>
+            <li><?php echo "<a href = 'order_history.php?Edit=$username'>Order History</a>"; ?></li>
           </ul>
         </div>
       </div>
@@ -170,7 +164,7 @@ echo $record;
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index1.php">Main</a><span class="sep">&nbsp;</span></li>
             
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
@@ -213,7 +207,7 @@ echo $record;
 	</form>	--> 
 	
 	<!--<form class="form-horizontal">-->
-	<form action="customeredit.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+	<form action="updatecustomer.php" method="post" enctype="multipart/form-data" class="form-horizontal">
   <fieldset>
    <p align="center"> <legend><?php echo $_SESSION['login_user'] ?>'s Profile</legend>
     <div class="form-group">
@@ -258,21 +252,21 @@ echo $record;
 	<div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Street Name</label>
       <div class="col-lg-10">
-        <input name="streetname" type="text" class="form-control" id="inputEmail" value="<?php echo $row['street_name']; ?>" required autocomplete="off">
+        <input name="streetname" type="text" class="form-control" id="streetname" value="<?php echo $row['street_name']; ?>" required autocomplete="off">
       </div>
     </div>
 	
 	<div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">House/Aprtment Number</label>
       <div class="col-lg-10">
-        <input name="housenum" type="text" class="form-control" id="inputEmail" value="<?php echo $row['house_number']; ?>"" required autocomplete="off">
+        <input name="housenum" type="text" class="form-control" id="housenum" value="<?php echo $row['house_number']; ?>"" required autocomplete="off">
       </div>
     </div>
 	
 	<div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Zip Code</label>
       <div class="col-lg-10">
-        <input name="zip" type="text" class="form-control" id="inputEmail" value="<?php echo $row['zip_code']; ?>" required autocomplete="off">
+        <input name="zip" type="text" class="form-control" id="zip" value="<?php echo $row['zip_code']; ?>" required autocomplete="off">
       </div>
     </div>
 	
@@ -287,7 +281,7 @@ echo $record;
       <label for="select" class="col-lg-2 control-label">State</label>
       <div class="col-lg-10">
         <select class="form-control" id="select" name ="state" required autocomplete="off">
-    <option disabled selected value> -- select a state -- </option>
+    <option> <?php echo $row['state']; ?> </option>
 	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -351,7 +345,7 @@ echo $record;
       <label for="select" class="col-lg-2 control-label">Security Question</label>
       <div class="col-lg-10">
         <select class="form-control" id="select" name ="question" required autocomplete="off">
-    <option disabled selected value> -- select a question -- </option>         
+    <option> <?php echo $row['security_questions']; ?> </option>         
 		 <option>What is your favorit music?</option>
           <option>What is your favorit teacher?</option>
           <option>What is your first car?</option>
@@ -369,10 +363,17 @@ echo $record;
       </div>
     </div>
 	
+	<div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Bank Account</label>
+      <div class="col-lg-10">
+        <input name="account" type="text" class="form-control" id="inputEmail" value="<?php echo $row['bank_account']; ?>" required autocomplete="off">
+      </div>
+    </div>
+	
 	
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="reset" class="btn btn-default" onclick="location.href = 'index1.php'" >Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
@@ -389,14 +390,7 @@ echo $record;
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>

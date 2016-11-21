@@ -21,14 +21,7 @@ $username = $_SESSION['login_user'];
 <script src="js/fns.js" type="text/javascript"></script>
 <style>
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
+ 
 
 /* Set a style for all buttons */
 button {
@@ -134,6 +127,52 @@ span.psw {
        width: 100%;
     }
 }
+ /* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: transparent;
+    color: #8c8c8c;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+  padding: 0 18px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+ opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+	}
+button.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
 </style>
 </head>
 <body>
@@ -151,9 +190,7 @@ span.psw {
         <li><a href="wii.php">wii</a></li>
         <li><a href="ps4.php">ps4</a></li>
         <li><a href="ps3.php">ps3</a></li>
-		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
-  padding: 0;
-  margin: 0 auto; " src="white-cart.png" ></a></li>
+		 
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -169,14 +206,8 @@ span.psw {
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            <li><?php echo "<a href = 'customeredit.php?Edit=$username'>Profile</a>";?> </li>
+            <li><?php echo "<a href = 'order_history.php?Edit=$username'>Order History</a>"; ?></li>
           </ul>
         </div>
       </div>
@@ -189,7 +220,7 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index1.php">Main</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
@@ -220,7 +251,8 @@ span.psw {
           </div>
           <div class="col-articles articles">
             <div class="cl">&nbsp;</div>
-            
+           <button class="accordion">PC</button>
+<div class="panel">  
  			 <?php 
 		$localhost = 'localhost';
 		$dusername = 'root';
@@ -231,7 +263,7 @@ span.psw {
 ?>
 <?php
   	
-                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id";  
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform = 'PC'";  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
@@ -240,10 +272,11 @@ span.psw {
   
 	?>	
 			<div class="article">
-			   
-              <div class="image"> <a href="#"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href="http://all-free-download.com/free-website-templates/"><?php echo $row["game_name"]; ?></a></h4>
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
             </div>
 			 <?php  
                      }  
@@ -253,10 +286,10 @@ else
 echo '<br>';
 echo '<br>';
 
-echo '<h1 style="text-align:center"> Sorry!! </h1>';
-echo '<br>';
-echo '<br>';
-echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+ 
 
 echo '<br>';
 echo '<br>';
@@ -264,7 +297,143 @@ echo '<br>';
 }				
                 ?>	
 			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+<button class="accordion">XBOX-ONE</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='Xbox One'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+   
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
 			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+
+<button class="accordion">PS4</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='PS4'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+   
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
 			
             <div class="cl">&nbsp;</div>
           </div>
@@ -282,10 +451,10 @@ echo '<br>';
       <div id="search" class="block">
         <div class="block-bot">
           <div class="block-cnt">
-            <form action="search.php" method="post">
+            <form action="search_user.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input type="text" class="field" value="Search" title="Search" />
+                <input name="search" id="search" type="text" class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>
@@ -312,40 +481,40 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Games</h3>
+              <h3>Editor`s Pick</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>FIFA 17</h4>
+                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>OVERWATCH</h4>
+                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Red Dead Redemption 2</h4>
+                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <a href="allgames2.php" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -354,40 +523,40 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Videos</h3>
+              <h3>Coming Soon</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/3max.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>PS4 FINAL FANTASY XV</h4>
+                <p>PlayStation 4 Slim 1TB FINAL FANTASY XV Limited Edition. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/129536brp.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Sniper Ghost Warrior 3</h4>
+                <p>Sniper Ghost Warrior 3 Limited Edition. Pre-order Sniper Ghost Warrior 3 now and receive the single player campaign "The Escape of Lydia" and two unique weapons skins. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/dead-rising-4-box-art-555x725.png" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Dead Rising 4</h4>
+                <p> The ultimate zombie slayer returns home for the holidays!. Frank West returns in an all-new chapter of one of the most popular zombie game franchises of all time. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -435,14 +604,7 @@ echo '<br>';
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+   
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>

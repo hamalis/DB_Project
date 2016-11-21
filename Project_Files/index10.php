@@ -134,23 +134,21 @@ span.psw {
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.html">home</a></li>
+        <li class="home"><a href="index.php">home</a></li>
         <li><a href="pc.php">pc</a></li>
         <li><a href="xbox.php">xbox</a></li>
         <li><a href="360.php">360</a></li>
         <li><a href="wii.php">wii</a></li>
         <li><a href="ps4.php">ps4</a></li>
         <li><a href="ps3.php">ps3</a></li>
-		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
-  padding: 0;
-  margin: 0 auto; " src="white-cart.png" ></a></li>
+ 
         </ul>
     </div>
     <!-- / Top Navigation -->
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.html">game<span>portal</span></a></h1>
+      <h1><a href="index.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -159,14 +157,14 @@ span.psw {
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
+           <!-- <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
             <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li> --> 
           </ul>
         </div>
       </div>
@@ -179,11 +177,11 @@ span.psw {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.html">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index.php">Main</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">Top Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames_public.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles_public.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories_public.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -196,7 +194,7 @@ span.psw {
   <div id="main">
     <div id="main-bot">
       <div class="cl">&nbsp;</div>
-      <!-- Content -->
+       <!-- Content -->
       <div id="content">
         <div class="block">
           <div class="block-bot">
@@ -207,33 +205,14 @@ span.psw {
                   <div class="frame">&nbsp;</div>
                   <div class="content">
                     <ul>
-					 <?php
-  
-		$localhost = 'localhost';
-		$dusername = 'root';
-		$dpassword = 'root';
-		$database = 'gp';
-		$connect = mysql_connect($localhost , $dusername , $dpassword);
-		mysql_select_db($database, $connect);
-  	
-                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id ";  
-                  $result = mysql_query($query);  
-                if(mysql_num_rows($result) > 0)  
-                {  
-                     while($row = mysql_fetch_array($result))  
-                     {  
-                     
-  
-	?>
                     <li class="fragment">
                       <div class="image">
-					 
-                      <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+             <img src="css/images/cod-iw.png" alt="" /> 
                   </div>
                   <div class="cnt">
                     <div class="cl">&nbsp;</div>
                     <div class="side-a">
-                      <h3 Style="color: #000;font-weight: bold; font-size: 14px;"><?php echo "".$row['game_name'].""; ?></h3>
+                      <h3 Style="color: #000;font-weight: bold; font-size: 14px;">COD INFINITE WARFARE</h3>
                       <ul class="rating">
                         <li><span class="star full-star">&nbsp;</span></li>
                         <li><span class="star full-star">&nbsp;</span></li>
@@ -244,13 +223,75 @@ span.psw {
                       </ul>
                     </div>
                     <div class="side-b">
-                      <p><?php echo "".$row['product_description'].""; ?></p>
+                      <p>Arm yourself with key knowledge about the latest Call of Duty experience - advanced campaign modes, multiplayer tips, zombies survival tricks and fresh details on Jackal Assault VR Experience!</p>
                     </div>
                     <div class="cl">&nbsp;</div>
                   </div>
                   </li>
-				<?php }} ?>
-                   
+                  <li class="fragment">
+                    <div class="image"> <img src="css/images/722624.jpg" alt="" /> </div>
+                    <div class="cnt">
+                      <div class="cl">&nbsp;</div>
+                      <div class="side-a">
+                        <h3 Style="color: #000;font-weight: bold; font-size: 16px;">FIFA 17</h3>
+                        <ul class="rating">
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star empty-star">&nbsp;</span></li>
+                          <li><span class="star empty-star">&nbsp;</span></li>
+                          <li><span class="votes">1.456 votes</span></li>
+                        </ul>
+                      </div>
+                      <div class="side-b">
+                        <p>For the first time ever in FIFA, live your story on and off the pitch as the Premier League’s next rising star, Alex Hunter. Play on any club in the Premier League, for authentic managers and alongside some of the best players on the planet.</p>
+                      </div>
+                      <div class="cl">&nbsp;</div>
+                    </div>
+                  </li>
+                  <li class="fragment">
+                    <div class="image"> <img src="css/images/gears-of-war-4-poster.jpeg" alt="" /> </div>
+                    <div class="cnt">
+                      <div class="cl">&nbsp;</div>
+                      <div class="side-a">
+                        <h3 Style="color: #000;font-weight: bold; font-size: 16px;">GEARS OF WAR 4</h3>
+                        <ul class="rating">
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star empty-star">&nbsp;</span></li>
+                          <li><span class="votes">1.456 votes</span></li>
+                        </ul>
+                      </div>
+                      <div class="side-b">
+                        <p>NEVER FIGHT ALONE. After narrowly escaping an attack on their village, jd fenix and his friends, kait and del, must rescue the ones they love and discover the source of a monstrous new enemy.</p>
+                      </div>
+                      <div class="cl">&nbsp;</div>
+                    </div>
+                  </li>
+                  <li class="fragment">
+                    <div class="image"> <img src="css/images/Watch-Dogs-2-Wallpapers-Marcus-Hacking.jpg" alt="" /> </div>
+                    <div class="cnt">
+                      <div class="cl">&nbsp;</div>
+                      <div class="side-a">
+                        <h4>WATCH DOGS II</h4>
+                        <ul class="rating">
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star full-star">&nbsp;</span></li>
+                          <li><span class="star empty-star">&nbsp;</span></li>
+                          <li><span class="star empty-star">&nbsp;</span></li>
+                          <li><span class="votes">1.456 votes</span></li>
+                        </ul>
+                      </div>
+                      <div class="side-b">
+                        <p>< Play as Marcus Holloway, a brilliant young hacker living in the birthplace of the tech revolution, the San Francisco Bay Area />.</p>
+                      </div>
+                      <div class="cl">&nbsp;</div>
+                    </div>
+                  </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -260,7 +301,7 @@ span.psw {
       <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <div class="head-cnt"> <a href="consoles.php" class="view-all">view all</a>
               <h3>New Consoles</h3>
               <div class="cl">&nbsp;</div>
             </div>
@@ -298,43 +339,41 @@ span.psw {
       <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt"> <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <div class="head-cnt"> <a href="accessories.php" class="view-all">view all</a>
               <h3>New Accessory</h3>
               <div class="cl">&nbsp;</div>
             </div>
           </div>
-          <div class="row-articles articles">
+          <div class="col-articles articles">
             <div class="cl">&nbsp;</div>
-            <div class="article">
-              <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img7.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit </p>
-              </div>
-              <div class="cl">&nbsp;</div>
-            </div>
-            <div class="article">
-              <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img8.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT 3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
-              </div>
-              <div class="cl">&nbsp;</div>
-            </div>
-            <div class="article last-article">
-              <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img9.jpg" alt="" /></a> </div>
-              <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">STARCRAF II</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scelerisque leo sodales sit amet. Curabitur volutpat lorem euismod nunc tincidunt condimentum. Suspendisse gravida elementum mauris, in vulputate justo ultrices sit amet. Maecenas ultricies elit in mi sagittis fringilla.</p>
-              </div>
-              <div class="cl">&nbsp;</div>
-            </div>
+            	 <?php
+  
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+  	
+                $query = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ";  
+                  $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+                     
+  
+	?>
+			<div class="article">
+              <div class="image"> <?php echo '<img src="data:image;base64,'.$row['image'].' ">'; ?>  
+			</div>
+              <h4> <?php echo "".$row['accessory_name'].""; ?></h4>
+             </div>
+             <?php }} ?>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
+      </div>
       </div>
     </div>
     <!-- / Content -->
@@ -405,45 +444,45 @@ window.onclick = function(event) {
         </div>
       </div>
 
-      <!-- / Sign In -->
+     <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Games</h3>
+              <h3>Games</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>FIFA 17</h4>
+                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>OVERWATCH</h4>
+                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Red Dead Redemption 2</h4>
+                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <a href="allgames.php" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>

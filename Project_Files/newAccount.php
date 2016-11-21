@@ -300,6 +300,12 @@
         <input name="answer" type="text" class="form-control" id="inputEmail" placeholder="Answer" required autocomplete="off">
       </div>
     </div>
+	 <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Bank Acount</label>
+      <div class="col-lg-10">
+        <input name="account" type="text" class="form-control" id="inputEmail" placeholder="Account Number" required autocomplete="off">
+      </div>
+    </div>
 	
 	
     <div class="form-group">

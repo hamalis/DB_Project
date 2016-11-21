@@ -82,14 +82,7 @@
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+             
           </ul>
         </div>
       </div>
@@ -102,7 +95,7 @@
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="admin.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
             
 		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
@@ -162,12 +155,12 @@
         <input type="file" name="image" class="form-control" required autocomplete="off">
       </div>
     </div>
-      <div class="form-group">
+        <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Product ID</label>
       <div class="col-lg-10">
         <input name="productid" type="text" class="form-control" id="inputEmail" placeholder="Product ID" required autocomplete="off">
       </div>
-	        </div>
+	        </div>   
 
 		
 			<div class="form-group">
@@ -191,14 +184,7 @@
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+             
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>

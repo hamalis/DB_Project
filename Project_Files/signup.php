@@ -25,9 +25,10 @@ else
 	$zip = mysql_real_escape_string($_POST["zip"]);
 	$city = mysql_real_escape_string($_POST["city"]);
 	$state = mysql_real_escape_string($_POST["state"]);
+	$account = $_POST["account"];
 
  
-		$db = "INSERT INTO customer (customer_username,password,email_address,security_questions,security_answer,first_name,last_name,street_name,house_number,zip_code,city,state) VALUES ('$username','$password','$email','$question','$answer','$first','$last','$streetname','$housenum','$zip','$city','$state') " ;
+		$db = "INSERT INTO customer (customer_username,password,email_address,security_questions,security_answer,first_name,last_name,street_name,house_number,zip_code,city,state,bank_account) VALUES ('$username','$password','$email','$question','$answer','$first','$last','$streetname','$housenum','$zip','$city','$state','$account') " ;
  				$q = mysql_query($db);
 		if($q)
 		{
