@@ -16,7 +16,7 @@ else
 	
 		$Aname = $_POST["Aname"];
 		$productid = $_POST["productid"];
-		$productDec = mysql_real_escape_string($_POST["Aname"]);
+		//$productDec = mysql_real_escape_string($_POST["Aname"]);
 		$price = mysql_real_escape_string($_POST["productprice"]);
 		$image= addslashes($_FILES['image']['tmp_name']);
 		$name= addslashes($_FILES['image']['image_name']);
@@ -34,7 +34,7 @@ COMMIT; ";
 		$q = mysql_query($db);*/ 
 		
 		$db = "INSERT INTO product(product_id, product_description, product_name, product_price)"; 
-		$db.= "VALUES('$productid','$productDec','$Aname','$price') " ;
+		$db.= "VALUES('$productid','Accessory','$Aname','$price') " ;
 		$q = mysql_query($db);
 		
 		$db2 = 'INSERT INTO accessory(accessory_name,image_name,image,product_id)'; 

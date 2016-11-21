@@ -33,7 +33,7 @@ COMMIT; ";
 		$q = mysql_query($db);*/ 
 		
 		$db = "INSERT INTO product(product_id, product_description, product_name, product_price)"; 
-		$db.= "VALUES('$productid','$cnmae','$cname','$price') " ;
+		$db.= "VALUES('$productid','Console','$cname','$price') " ;
 		$q = mysql_query($db);
 		
 		$db2 = 'INSERT INTO console(console_type,image_name,image,product_id)'; 
