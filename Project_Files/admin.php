@@ -30,22 +30,20 @@ $username = $_SESSION['login_user'];
     <div id="top-nav">
       <ul>
         <li class="home"><a href="admin.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
-		<li><a href="shopping.php"><img style ="hight:20px; width:20px; list-style: none;
-  padding: 0;
-  margin: 0 auto; " src="white-cart.png" ></a></li>
+          <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
+		 
         </ul>
     </div>
     <!-- / Top Navigation -->
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index1.php">game<span>portal</span></a></h1>
+      <h1><a href="admin.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -67,7 +65,7 @@ $username = $_SESSION['login_user'];
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index1.php">Review</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Home</a><span class="sep">&nbsp;</span></li>
 		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
@@ -110,7 +108,7 @@ $username = $_SESSION['login_user'];
   </div>
   <div class="panel-body">
 <p align="center"><img src="css/images/mario_256.png" style="  align-items: center; justify-content:center; width:10%" > </img></a>     </div>
- <p align="center"> <a href="addgame.php" >Add Game</a> 	|	 <a href="admin_games.php" >Delete Game </a></p>
+ <p align="center"> <a href="addgame.php" >Add Game</a> 	|	 <a href="admin_games.php" >Delete Game </a> |	 <a href="edit_games.php" >Edit Game </a></p>
    </div>
  
 
@@ -121,7 +119,7 @@ $username = $_SESSION['login_user'];
   <div class="panel-body">
 <p align="center"> <img src="css/images/ps4_and_ps4_controller_512.png" style="  align-items: center; justify-content:center; width:10%" > </img>   
 </div>
-   <p align="center">  <a href="addconsole.php" >Add Console</a> 	|	 <a href="admin_console.php" >Delete Console</a></p>
+   <p align="center">  <a href="addconsole.php" >Add Console</a> 	|	 <a href="admin_console.php" >Delete Console</a> |	 <a href="edit_console.php" >Edit Console </a></p>
 </div>
 
 <div class="panel panel-warning">
@@ -131,7 +129,7 @@ $username = $_SESSION['login_user'];
   <div class="panel-body">
 <p align="center">  <img src="css/images/ps4-overview-lead-image-ds4-01-eu-06sep16.png" style="  align-items: center; justify-content:center; width:10%" > 
  </div>
-    <p align="center">  <a href="addaccessory.php" >Add Accessory</a> 	|	 <a href="admin_accessory.php" >Delete Accessory</a></p>
+    <p align="center">  <a href="addaccessory.php" >Add Accessory</a> 	|	 <a href="admin_accessory.php" >Delete Accessory</a>  |	 <a href="edit_accessory.php" >Edit Accessory </a></p>
 
 </div>
 	  
@@ -152,10 +150,10 @@ $username = $_SESSION['login_user'];
       <div id="search" class="block">
         <div class="block-bot">
           <div class="block-cnt">
-            <form action="search.php" method="post">
+            <form action="search_admin.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input type="text" class="field" value="Search" title="Search" />
+                <input name ="search" id = "search" type="text" class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>
@@ -179,7 +177,7 @@ $username = $_SESSION['login_user'];
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Games</h3>
+              <h3>Editor`s Pick</h3>
             </div>
           </div>
           <div class="image-articles articles">
@@ -221,40 +219,40 @@ $username = $_SESSION['login_user'];
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Videos</h3>
+              <h3>Coming Soon</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/3max.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>PS4 FINAL FANTASY XV</h4>
+                <p>PlayStation 4 Slim 1TB FINAL FANTASY XV Limited Edition. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/129536brp.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Sniper Ghost Warrior 3</h4>
+                <p>Sniper Ghost Warrior 3 Limited Edition. Pre-order Sniper Ghost Warrior 3 now and receive the single player campaign "The Escape of Lydia" and two unique weapons skins. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/dead-rising-4-box-art-555x725.png" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Dead Rising 4</h4>
+                <p> The ultimate zombie slayer returns home for the holidays!. Frank West returns in an all-new chapter of one of the most popular zombie game franchises of all time. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -263,32 +261,32 @@ $username = $_SESSION['login_user'];
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+              <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -302,22 +300,15 @@ $username = $_SESSION['login_user'];
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+             <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

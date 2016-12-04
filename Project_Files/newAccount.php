@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
  <link rel="stylesheet" href="css/style2.css" type="text/css" media="all" />
 <script src="js/error.js" type="text/javascript"></script>
+ <script src="CheckForm.js" type="text/javascript" ></script> 
 
 
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
@@ -145,7 +146,7 @@
 	</form>	--> 
 	
 	<!--<form class="form-horizontal">-->
-	<form action="signup.php" method="post" class="form-horizontal">
+	<form action="signup.php" method="post" class="form-horizontal" name="myform" onsubmit="return checkform()">
   <fieldset>
     <legend>New Member Sign Up</legend>
     <div class="form-group">
@@ -172,13 +173,13 @@
 	<div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Email</label>
       <div class="col-lg-10">
-        <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email" required autocomplete="off">
+        <input name="email" id ="email" type="text" class="form-control" placeholder="Email" required autocomplete="off"><span id="email_error"></span>
       </div>
     </div>
     <div class="form-group">
       <label for="inputPassword" class="col-lg-2 control-label">Password</label>
       <div class="col-lg-10">
-        <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password" required autocomplete="off">
+        <input name="password" type="password" class="form-control" id="passd" placeholder="Password" required autocomplete="off"><span id="password_error"></span>
               </div>
 </div>
 
@@ -303,7 +304,7 @@
 	 <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Bank Acount</label>
       <div class="col-lg-10">
-        <input name="account" type="text" class="form-control" id="inputEmail" placeholder="Account Number" required autocomplete="off">
+        <input name="account" type="text" class="form-control" id="credit" placeholder="Account Number" required autocomplete="off"><span id="credit_error"></span> 
       </div>
     </div>
 	
@@ -311,7 +312,7 @@
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" value="Submit" name="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </fieldset>

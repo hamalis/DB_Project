@@ -27,7 +27,7 @@ $username = $_SESSION['login_user'];
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 2px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -137,6 +137,9 @@ span.psw {
        width: 100%;
     }
 }
+
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
+
 </style>
 </head>
 <body>
@@ -213,8 +216,8 @@ span.psw {
             </div>
           </div>
           <div class="col-articles articles">
-            <div class="cl">&nbsp;</div>
-            
+            		            <div class="cl">&nbsp;</div>
+
  			 <?php 
 		$localhost = 'localhost';
 		$dusername = 'root';
@@ -225,7 +228,7 @@ span.psw {
 ?>
 <?php
   	
-                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id LIMIT 10";  
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id ORDER BY game_id DESC LIMIT 8";  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
@@ -233,14 +236,16 @@ span.psw {
                      {  
   
 	?>	
+
 			<div class="article">
 			   
-              <div class="image"> <?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["game_name"]; ?></h4>
+              <div > <?php echo '<img height="160" width="130" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:17px"><?php echo $row["game_name"]; ?></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
 			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
-			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = ' '>Edit</a>" ;?> </p>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
             </div>
+			
 			 <?php  
                      }  
                 } 
@@ -278,10 +283,10 @@ echo '<br>';
       <div id="search" class="block">
         <div class="block-bot">
           <div class="block-cnt">
-            <form action="search.php" method="post">
+            <form action="search_admin.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input type="text" class="field" value="Search" title="Search" />
+                <input name="search" id="search" type="text" class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>

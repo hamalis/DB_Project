@@ -1,3 +1,17 @@
+<?php       
+session_start();
+if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
+      // redirect to your login page
+      exit();
+}
+
+$username = $_SESSION['login_user'];
+
+// serve the page normally.
+
+ 
+
+?> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -5,20 +19,72 @@
 <title>GamePortal</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<style> 
+ element.style {
+}
+.btn {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.btn-danger {
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+.btn-warning {
+    color: #ffffff;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a {
+    color: #4582ec;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+ 
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+  
+ </style>
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
 <style>
- /* Full-width input fields */
+/* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 4px 0;
+    margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
 
 /* Set a style for all buttons */
 button {
@@ -124,10 +190,15 @@ span.psw {
        width: 100%;
     }
 }
-
-#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
-
 </style>
+ 
+
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
+ 
 <style>
 .pagination1 {
 margin:0; 
@@ -172,6 +243,10 @@ text-decoration: none;
 padding: 10px 0 0 0; }
 </style>
 
+
+
+
+ 
 </head>
 <body>
 <!-- Page -->
@@ -181,21 +256,21 @@ padding: 10px 0 0 0; }
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.php">home</a></li>
-        <li><a >pc</a></li>
-        <li><a >xbox</a></li>
-        <li><a >360</a></li>
-        <li><a >wii</a></li>
-        <li><a >ps4</a></li>
-        <li><a >ps3</a></li>
- 
+        <li class="home"><a href="admin.php">home</a></li>
+          <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
+	 
         </ul>
     </div>
     <!-- / Top Navigation -->
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.php">game<span>portal</span></a></h1>
+      <h1><a href="admin.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -204,7 +279,7 @@ padding: 10px 0 0 0; }
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-             
+        
           </ul>
         </div>
       </div>
@@ -217,11 +292,11 @@ padding: 10px 0 0 0; }
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.php">Main</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames_public.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles_public.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories_public.php">Accessories</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -259,17 +334,18 @@ padding: 10px 0 0 0; }
 ?>
 <?php
   	
-               // $query = "SELECT * FROM accessory a,product p WHERE p.product_id = a.product_id ORDER BY accessory_id DESC  ";  
-               // $result = mysql_query($query);  
-               // if(mysql_num_rows($result) > 0)  
-               // {  
-                   //  while($row = mysql_fetch_array($result))  
-                    // {  
-  	 $sql = mysql_query("SELECT * FROM accessory a,product p WHERE p.product_id = a.product_id ORDER BY accessory_id DESC  "); 
+              /*  $query = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ORDER BY accessory_id DESC";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  */ 
+   $sql = mysql_query("SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ORDER BY accessory_id DESC"); 
 $total = mysql_num_rows($sql);
 
 $adjacents = 3;
-$targetpage = "accessories_public.php"; //your file name
+$targetpage = "edit_accessory.php"; //your file name
 $limit = 12; //how many items to show per page
  
   $page =  (isset($_GET['page'])) ? (int)$_GET['page'] : 0;
@@ -287,7 +363,7 @@ $next = $page + 1; //next page is current page + 1
 $lastpage = ceil($total/$limit); //lastpage.
 $lpm1 = $lastpage - 1; //last page minus 1
 
-$sql2 = "SELECT * FROM accessory a,product p WHERE p.product_id = a.product_id ORDER BY accessory_id DESC  ";
+$sql2 = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ORDER BY accessory_id DESC";
 $sql2 .= " limit $start ,$limit ";
 $sql_query = mysql_query($sql2);
 
@@ -372,15 +448,16 @@ $pagination.= "</ul></div>\n";
 }
 
 	while($row = mysql_fetch_array($sql_query)){
-	?>	
+	?>
+	
 			<div class="article">
 			   
-              <div ><?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4 style="font-size:18px"><?php echo $row["product_name"]; ?></h4>
-              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+              <div class="image"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="text-align:center;"><?php echo $row["accessory_name"]; ?></h4>
+               <br><p align="center"><?php echo "<a class='btn btn-warning' href = 'edit_accessory2.php?Delete=$row[accessory_id]'>Edit</a>" ;?>     
             </div>
 			 <?php  
-                     }  
+                    }  
                  		  echo "<div style=''>".$pagination."</div>"; 
                 ?>	
 			
@@ -405,7 +482,7 @@ $pagination.= "</ul></div>\n";
             <form action="search.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input name="search" id="search" type="text" class="field" value="Search" title="Search" />
+                <input type="text" class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>
@@ -415,93 +492,57 @@ $pagination.= "</ul></div>\n";
       </div>
       <!-- / Search -->
       <!-- Sign In -->
-      <div id="sign" class="block" >
-        <div class="block-bot">
-          <div class="block-cnt">
-            <div class="cl" >&nbsp;</div>
-            <a onclick="document.getElementById('id01').style.display='block'" class="button button-left">sign in</a> <a href="newAccount.php" class="button button-right">create account</a>
-			<div id="id01" class="modal" >
-  
-  <form class="modal-content animate" action="php/login.php" method="post" >
-  <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar.png" alt="Avatar" class="avatar">
-    </div>
 
-    <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-        
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="resetPassword.php">password?</a></span>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-            <div class="cl">&nbsp;</div>
-            <p class="center">&nbsp;&nbsp;<a href="resetPassword.php">Forgot Password?</a></p>
-          </div>
-        </div>
-      </div>
-
+      <div id="sign" class="block">
+      <!-- <div class="cl">&nbsp;</div> --> 
+			<div class="card">
+			  <img src="img_avatar1.png" alt="Avatar" style="width:100%">
+			  <div class="container">
+				<h3 style = "text-align: center;"><b><?php  echo $_SESSION['login_user'];?></b></h3> 
+				<p align="center"><?php echo "<a href = 'customeredit.php?Edit=$username'>Edit</a>"; ?> 
+	|	<a href = "LogoutPage.php">Sign Out</a></p> 
+			  </div>
+			</div>
+			</div>
       <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Editor`s Pick</h3>
+              <h3>Top Games</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>FIFA 17</h4>
-                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>OVERWATCH</h4>
-                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>Red Dead Redemption 2</h4>
-                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="allgames.php" class="view-all">view all</a>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -510,40 +551,40 @@ window.onclick = function(event) {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-               <h3>Coming Soon</h3>
+              <h3>Top Videos</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"><img src="css/images/3max.jpg" alt="" /> </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>PS4 FINAL FANTASY XV</h4>
-                <p>PlayStation 4 Slim 1TB FINAL FANTASY XV Limited Edition. </p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"><img src="css/images/129536brp.jpg" alt="" /> </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>Sniper Ghost Warrior 3</h4>
-                <p>Sniper Ghost Warrior 3 Limited Edition. Pre-order Sniper Ghost Warrior 3 now and receive the single player campaign "The Escape of Lydia" and two unique weapons skins. </p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"><img src="css/images/dead-rising-4-box-art-555x725.png" alt="" /> </div>
+              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
               <div class="cnt">
-                <h4>Dead Rising 4</h4>
-                <p> The ultimate zombie slayer returns home for the holidays!. Frank West returns in an all-new chapter of one of the most popular zombie game franchises of all time. </p>
+                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <p class="view-all" style="font-size:1px">.</p>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -552,32 +593,32 @@ window.onclick = function(event) {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest News</h3>
+              <h3>Latest Articles</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
-              <small class="date">November 21, 2016</small>
-              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
+              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
+              <small class="date">21.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
             </div>
             <div class="article">
-              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
-              <small class="date">November 21, 2016</small>
-              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
+              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
+              <small class="date">20.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
             </div>
             <div class="article">
-              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
-              <small class="date">November 19, 2016</small>
-              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
+              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
+              <small class="date">19.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
             </div>
             <div class="article">
-              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
-              <small class="date">November 17, 2016</small>
-              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
+              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
+              <small class="date">15.07.09</small>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
             </div>
             <div class="cl">&nbsp;</div>
-            <p class="view-all" style="font-size:1px">.</p>
+            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -591,15 +632,15 @@ window.onclick = function(event) {
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-          
+            
           </ul>
           <ul>
-            <li><a >pc</a></li>
-            <li><a >xbox</a></li>
-            <li><a >360</a></li>
-            <li><a >wii</a></li>
-            <li><a >ps4</a></li>
-            <li><a >ps3</a></li> 
+               <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

@@ -126,7 +126,54 @@ span.psw {
        width: 100%;
     }
 }
+
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
+
 </style>
+<style>
+.pagination1 {
+margin:0; 
+padding:15px;
+    padding-left: 250px;
+
+float:left;
+}
+.pagination1 ul {
+width:600px;
+float: right;
+list-style: none;
+margin:0 0 0 ;
+padding:0;
+}
+.pagination1 li span { line-height:45px; font-weight:bold;}
+.pagination1 li {
+margin:0 0 0 0;
+float:left;
+font-size:16px;
+text-transform:uppercase;
+}
+.pagination1 li a {
+color:#7f8588;
+padding:10px 0 0 0; width:33px; height:33px;
+text-decoration:none; text-align:center;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+display:block;
+}
+.pagination1 li:last-child a:hover { background:none; color:#7f8588;}
+.pagination1 li:first-child a:hover { background:none;color:#7f8588;}
+.pagination1 li a:hover {
+color:#fff;
+text-decoration: none;
+display: block;
+padding:10px 0 0 0; width:33px; height:33px;
+}
+.pagination1 li.activepage a { 
+color:#fff;
+text-decoration: none;
+padding: 10px 0 0 0; }
+</style>
+
 </head>
 <body>
 <!-- Page -->
@@ -137,12 +184,12 @@ span.psw {
     <div id="top-nav">
       <ul>
         <li class="home"><a href="index1.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li><a >pc</a></li>
+        <li><a >xbox</a></li>
+        <li><a >360</a></li>
+        <li><a >wii</a></li>
+        <li><a >ps4</a></li>
+        <li><a >ps3</a></li>
 		 
         </ul>
     </div>
@@ -215,37 +262,130 @@ span.psw {
 ?>
 <?php
   	
-                $query = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id";  
+               /* $query = "SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id ORDER BY accessory_id DESC";  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
-  
+  */ 
+  	 $sql = mysql_query("SELECT * FROM accessory a,product p WHERE p.product_id = a.product_id ORDER BY accessory_id DESC  "); 
+$total = mysql_num_rows($sql);
+
+$adjacents = 3;
+$targetpage = "accessories.php"; //your file name
+$limit = 12; //how many items to show per page
+ 
+  $page =  (isset($_GET['page'])) ? (int)$_GET['page'] : 0;
+ 
+if($page){ 
+$start = ($page - 1) * $limit; //first item to display on this page
+}else{
+$start = 0;
+}
+
+/* Setup page vars for display. */
+if ($page == 0) $page = 1; //if no page var is given, default to 1.
+$prev = $page - 1; //previous page is current page - 1
+$next = $page + 1; //next page is current page + 1
+$lastpage = ceil($total/$limit); //lastpage.
+$lpm1 = $lastpage - 1; //last page minus 1
+
+$sql2 = "SELECT * FROM accessory a,product p WHERE p.product_id = a.product_id ORDER BY accessory_id DESC  ";
+$sql2 .= " limit $start ,$limit ";
+$sql_query = mysql_query($sql2);
+
+
+/* CREATE THE PAGINATION */
+
+$pagination = "";
+$counter = 0; 
+if($lastpage > 1)
+{ 
+$pagination .= "<div class='pagination1'> <ul>";
+if ($page > $counter+1) {
+$pagination.= "<li><a href=\"$targetpage?page=$prev\">prev</a></li>"; 
+}
+
+if ($lastpage < 7 + ($adjacents * 2)) 
+{ 
+for ($counter = 1; $counter <= $lastpage; $counter++)
+{
+if ($counter == $page)
+$pagination.= "<li><a href='#' class='active'>$counter</a></li>";
+else
+$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>"; 
+}
+}
+elseif($lastpage > 5 + ($adjacents * 2)) //enough pages to hide some
+{
+//close to beginning; only hide later pages
+if($page < 1 + ($adjacents * 2)) 
+{
+for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++)
+{
+if ($counter == $page)
+$pagination.= "<li><a href='#' class='active'>$counter</a></li>";
+else
+$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>"; 
+}
+$pagination.= "<li>...</li>";
+$pagination.= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
+$pagination.= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>"; 
+}
+//in middle; hide some front and some back
+elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
+{
+$pagination.= "<li><a href=\"$targetpage?page=1\">1</a></li>";
+$pagination.= "<li><a href=\"$targetpage?page=2\">2</a></li>";
+$pagination.= "<li>...</li>";
+for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++)
+{
+if ($counter == $page)
+$pagination.= "<li><a href='#' class='active'>$counter</a></li>";
+else
+$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>"; 
+}
+$pagination.= "<li>...</li>";
+$pagination.= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
+$pagination.= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>"; 
+}
+//close to end; only hide early pages
+else
+{
+$pagination.= "<li><a href=\"$targetpage?page=1\">1</a></li>";
+$pagination.= "<li><a href=\"$targetpage?page=2\">2</a></li>";
+$pagination.= "<li>...</li>";
+for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; 
+$counter++)
+{
+if ($counter == $page)
+$pagination.= "<li><a href='#' class='active'>$counter</a></li>";
+else
+$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>"; 
+}
+}
+}
+
+//next button
+if ($page < $counter - 1) 
+$pagination.= "<li><a href=\"$targetpage?page=$next\">next</a></li>";
+else
+$pagination.= "";
+$pagination.= "</ul></div>\n"; 
+}
+
+	while($row = mysql_fetch_array($sql_query)){
 	?>	
 			<div class="article">
 			   
-              <div class="image"> <a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo $row["accessory_name"]; ?></a></h4>
+              <div > <a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px"><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo $row["accessory_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
             </div>
 			 <?php  
-                     }  
-                } 
-else 
-{
-echo '<br>';
-echo '<br>';
-
-echo '<h1 style="text-align:center"> Sorry!! </h1>';
-echo '<br>';
-echo '<br>';
-echo '<h1 style="text-align:center"> Accerssories will be availabe soon  </h1>';
-
-echo '<br>';
-echo '<br>';
-
-}				
+                   }  
+                 		  echo "<div style=''>".$pagination."</div>"; 
                 ?>	
 			
 			
@@ -380,32 +520,32 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+             <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -419,22 +559,15 @@ echo '<br>';
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+           
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+            <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

@@ -1,3 +1,66 @@
+<?php       include('session.php');
+//session_start();
+if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
+      // redirect to your login page
+      exit();
+}
+
+$username = $_SESSION['login_user'];
+// serve the page normally.
+?> 
+
+<?php
+
+
+
+
+$username = $_SESSION['login_user'];
+
+// serve the page normally.
+
+ 
+$localhost = 'localhost';
+$dusername = 'root';
+$dpassword = 'root';
+$database = 'gp';
+$connection = mysql_connect($localhost , $dusername , $dpassword);
+mysql_select_db($database, $connection);
+ 
+
+ if (isset($_GET['Delete']))
+{
+	
+	$game = $_GET['Delete'];
+	$que = mysql_query("Select *  FROM game g, product p WHERE g.game_id = '$game'");
+	$row = mysql_fetch_array($que);
+ 
+}
+
+ if (isset($_POST['update']))
+{
+
+	$gname = mysql_real_escape_string($_POST['gname']);
+	$gameszie = mysql_real_escape_string($_POST['gameszie']);
+	$usernum = mysql_real_escape_string($_POST['usernum']);
+	$productprice = mysql_real_escape_string($_POST['productprice']);
+	$platform = mysql_real_escape_string($_POST['platform']);
+	 
+	
+	
+	$que1 =  "UPDATE game g,product p SET g.game_name ='$gname', g.size_of_game ='$gameszie', g.number_of_players ='$usernum', g.platform ='$platform', p.product_price = '$productprice', p.product_name = '$gname' WHERE g.game_id = '$game' AND p.product_id = g.product_id";
+ 	$record = mysql_query($que1) or print(mysql_error());
+ 
+	echo "<meta http-equiv='refresh' content = '0;url=admin.php'>";
+ 
+//iterate over all the rows
+if($record === FALSE)
+
+echo $record;
+
+}
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -61,12 +124,12 @@
     <div id="top-nav">
       <ul>
         <li class="home"><a href="admin.php">home</a></li>
-          <li><a  >pc</a></li>
-            <li><a  >xbox</a></li>
-            <li><a  >360</a></li>
-            <li><a  >wii</a></li>
-            <li><a  >ps4</a></li>
-            <li><a  >ps3</a></li> 
+        <li><a href="pc.php">pc</a></li>
+        <li><a href="xbox.php">xbox</a></li>
+        <li><a href="360.php">360</a></li>
+        <li><a href="wii.php">wii</a></li>
+        <li><a href="ps4.php">ps4</a></li>
+        <li><a href="ps3.php">ps3</a></li>
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -95,7 +158,7 @@
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Main</a><span class="sep">&nbsp;</span></li>
             
 		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
             <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
@@ -138,39 +201,60 @@
 	</form>	--> 
 	
 	<!--<form class="form-horizontal">-->
-	<form action="php/addconsoles.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+	<form action="<?php $_PHP_SELF ?>" method="post"  class="form-horizontal" enctype="multipart/form-data">
   <fieldset>
-    <p align="center"><legend>Add a new Console</legend>
+    <p align="center"><legend>Edit game</legend>
     <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Console Name</label>
+      <label for="inputEmail" class="col-lg-2 control-label">Game Name</label>
       <div class="col-lg-10">
-        <input name="cname" type="text" class="form-control" id="inputEmail" placeholder="Game Name" required autocomplete="off">
+        <input name="gname" type="text" class="form-control" id="inputEmail" value="<?php echo $row['game_name']; ?>"  autocomplete="off">
       </div>
       </div>
 
-	  
-	<div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Console Image</label>
+	  <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Game Size</label>
       <div class="col-lg-10">
-        <input type="file" name="image" class="form-control" required autocomplete="off">
+        <input name="gameszie" type="text" class="form-control" id="inputEmail" value="<?php echo $row['size_of_game']; ?>"  autocomplete="off" >
+      </div>
+	        </div>
+
+	  <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Number of Player</label>
+      <div class="col-lg-10">
+        <input name="usernum" type="text" class="form-control" id="inputEmail" value="<?php echo $row['number_of_players']; ?>"  autocomplete="off">
+      </div>
+	        </div>
+
+	
+      <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Game Image</label>
+      <div class="col-lg-10">
+        <input type="file" name="image" class="form-control"  autocomplete="off">
       </div>
     </div>
-        <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Product ID</label>
+	        
+<!--
+ <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Product Description</label>
       <div class="col-lg-10">
-        <input name="productid" type="text" class="form-control" id="inputEmail" placeholder="Product ID" required autocomplete="off">
+        <input name="productdesc" type="text" class="form-control" id="inputEmail" placeholder="Product Description" required autocomplete="off">
       </div>
-	        </div>   
-
-		
+	        </div> 
+			--> 
 			<div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Product Price</label>
       <div class="col-lg-10">
-        <input name="productprice" type="text" class="form-control" id="inputEmail" placeholder="Price" required autocomplete="off">
+        <input name="productprice" type="text" class="form-control" id="inputEmail" value="<?php echo $row['product_price']; ?>"  autocomplete="off">
+      </div>
+	        </div>
+			<div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Platform</label>
+      <div class="col-lg-10">
+        <input name="platform" type="text" class="form-control" id="inputEmail" value="<?php echo $row['platform']; ?>"  autocomplete="off">
       </div>
 	        </div>
   </fieldset>
-  <p align="center"><button class="btn btn-warning">Add Console</button>
+  <p align="center"><button class="btn btn-warning" name="update" id="update" >Edit</button>
 
 </form>
 	
@@ -184,15 +268,15 @@
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-             
+            
           </ul>
           <ul>
-               <li><a  >pc</a></li>
-            <li><a  >xbox</a></li>
-            <li><a  >360</a></li>
-            <li><a  >wii</a></li>
-            <li><a  >ps4</a></li>
-            <li><a  >ps3</a></li> 
+            <li><a href="pc.php">pc</a></li>
+            <li><a href="xbox.php">xbox</a></li>
+            <li><a href="360.php">360</a></li>
+            <li><a href="wii.php">wii</a></li>
+            <li><a href="ps4.php">ps4</a></li>
+            <li><a href="ps3.php">ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

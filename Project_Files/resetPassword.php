@@ -34,7 +34,7 @@
 }
 
 .button span:after {
-  content: '»';
+  content: '?';
   position: absolute;
   opacity: 0;
   top: 0;
@@ -60,52 +60,27 @@
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="admin.php">home</a></li>
-          <li><a  >pc</a></li>
-            <li><a  >xbox</a></li>
-            <li><a  >360</a></li>
-            <li><a  >wii</a></li>
-            <li><a  >ps4</a></li>
-            <li><a  >ps3</a></li> 
+        <li class="home"><a href="index1.php">home</a></li>
+        <li><a href="pc.php">pc</a></li>
+        <li><a href="xbox.php">xbox</a></li>
+        <li><a href="360.php">360</a></li>
+        <li><a href="wii.php">wii</a></li>
+        <li><a href="ps4.php">ps4</a></li>
+        <li><a href="ps3.php">ps3</a></li>
         </ul>
     </div>
     <!-- / Top Navigation -->
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="admin.php">game<span>portal</span></a></h1>
+      <h1><a href="index1.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
     <!-- Main Navigation -->
-    <div id="main-nav">
-      <div class="bg-right">
-        <div class="bg-left">
-          <ul>
-             
-          </ul>
-        </div>
-      </div>
-    </div>
     <!-- / Main Navigation -->
     <div class="cl">&nbsp;</div>
     <!-- Sort Navigation -->
-    <div id="sort-nav">
-      <div class="bg-right">
-        <div class="bg-left">
-          <div class="cl">&nbsp;</div>
-          <ul>
-            <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
-            
-		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
-          </ul>
-          <div class="cl">&nbsp;</div>
-        </div>
-      </div>
-    </div>
     <!-- / Sort Navigation -->
   </div>
   <!-- / Header -->
@@ -138,40 +113,59 @@
 	</form>	--> 
 	
 	<!--<form class="form-horizontal">-->
-	<form action="php/addconsoles.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="php/checkSecurityAns.php" method="post" enctype="multipart/form-data" class="form-horizontal">
   <fieldset>
-    <p align="center"><legend>Add a new Console</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Console Name</label>
-      <div class="col-lg-10">
-        <input name="cname" type="text" class="form-control" id="inputEmail" placeholder="Game Name" required autocomplete="off">
-      </div>
-      </div>
-
-	  
+	<p align="center"> <legend>Reset Your Password</legend>
+	
 	<div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Console Image</label>
+      <label for="inputEmail" class="col-lg-2 control-label">Your Username</label>
       <div class="col-lg-10">
-        <input type="file" name="image" class="form-control" required autocomplete="off">
+        <input name="username" type="text" class="form-control" id="inputEmail" value="" required autocomplete="off">
+      </div>
+	</div>
+
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Security Question</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select" name ="question" required autocomplete="off">         
+			<option>What is your favorit music?</option>
+			<option>What is your favorit teacher?</option>
+			<option>What is your first car?</option>
+			<option>What primary school did you attend?</option>
+			<option>In what town or city did you meet your spouse/partner?</option>
+			<option>What is your grandmother's (on your mother's side) maiden name?</option>
+        </select>
+        
       </div>
     </div>
-        <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Product ID</label>
+	
+	<div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Your Answer</label>
       <div class="col-lg-10">
-        <input name="productid" type="text" class="form-control" id="inputEmail" placeholder="Product ID" required autocomplete="off">
+        <input name="answer" type="text" class="form-control" id="inputEmail" value="" required autocomplete="off">
       </div>
-	        </div>   
+    </div>
+	<div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">New password</label>
+      <div class="col-lg-10">
+        <input name="pass1" type="text" class="form-control" id="inputEmail" value="" required autocomplete="off">
+      </div>
+	</div>
 
-		
-			<div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Product Price</label>
+	<div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Verify Password</label>
       <div class="col-lg-10">
-        <input name="productprice" type="text" class="form-control" id="inputEmail" placeholder="Price" required autocomplete="off">
+        <input name="pass2" type="text" class="form-control" id="inputEmail" value="" required autocomplete="off">
       </div>
-	        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default" onclick="location.href = 'index.php'" >Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
   </fieldset>
-  <p align="center"><button class="btn btn-warning">Add Console</button>
-
 </form>
 	
 	
@@ -184,15 +178,15 @@
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-             
+            
           </ul>
           <ul>
-               <li><a  >pc</a></li>
-            <li><a  >xbox</a></li>
-            <li><a  >360</a></li>
-            <li><a  >wii</a></li>
-            <li><a  >ps4</a></li>
-            <li><a  >ps3</a></li> 
+            <li><a href="pc.php">pc</a></li>
+            <li><a href="xbox.php">xbox</a></li>
+            <li><a href="360.php">360</a></li>
+            <li><a href="wii.php">wii</a></li>
+            <li><a href="ps4.php">ps4</a></li>
+            <li><a href="ps3.php">ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

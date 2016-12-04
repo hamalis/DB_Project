@@ -16,67 +16,15 @@ $username = $_SESSION['login_user'];
 <title>GamePortal</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
 <style>
- element.style {
-}
-.btn {
-    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.btn-danger {
-    color: #ffffff;
-    background-color: #d9534f;
-    border-color: #d9534f;
-}
-.btn-warning {
-    color: #ffffff;
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-}
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 8px 12px;
-    font-size: 16px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-a {
-    color: #4582ec;
-    text-decoration: none;
-}
-a {
-    background-color: transparent;
-}
- 
-user agent stylesheet
-a:-webkit-any-link {
-    color: -webkit-link;
-    text-decoration: underline;
-    cursor: auto;
-}
-  
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 4px 0;
+    margin: 2px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -230,11 +178,8 @@ button.accordion:after {
 button.accordion.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
-.btn-success {
-    color: #ffffff;
-    background-color: #3fad46;
-    border-color: #3fad46;
-}
+
+
 </style>
 </head>
 <body>
@@ -245,13 +190,13 @@ button.accordion.active:after {
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index1.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li class="home"><a href="admin.php">home</a></li>
+      <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a>ps3</a></li>
 		 
         </ul>
     </div>
@@ -259,7 +204,7 @@ button.accordion.active:after {
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index1.php">game<span>portal</span></a></h1>
+      <h1><a href="admin.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -268,8 +213,14 @@ button.accordion.active:after {
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><?php echo "<a href = 'customeredit.php?Edit=$username'>Profile</a>";?> </li>
-            <li><?php echo "<a href = 'order_history.php?Edit=$username'>Order History</a>"; ?></li>
+           <!-- <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
+            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li> --> 
           </ul>
         </div>
       </div>
@@ -282,11 +233,11 @@ button.accordion.active:after {
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index1.php">Main</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="admin.php">Main</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -306,102 +257,154 @@ button.accordion.active:after {
              <div class="block">
         <div class="block-bot">
           <div class="head">
-            <div class="head-cnt">  
-              <h3>Confirmation</h3>
-              <div class="cl" >&nbsp;</div>
+            <div class="head-cnt">   
+              <h3>Search result</h3>
+              <div class="cl">&nbsp;</div>
             </div>
           </div>
           <div class="col-articles articles">
- 		  <h1 style="text-align:center; color:yellow"> <strong>Please confirm your order: </strong></h1>
-		<br><br> 
-
             <div class="cl">&nbsp;</div>
-            
- 			 <?php 
+  <?php
+
 $localhost = 'localhost';
 $dusername = 'root';
 $dpassword = 'root';
 $database = 'gp';
 $connection = mysql_connect($localhost , $dusername , $dpassword);
 mysql_select_db($database, $connection);
-//if ($connection->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//} 
 
- if (isset($_GET['ADD']))
-{
+    $item = $_POST["search"];
+
+
+        
+        if ($item == NULL )
+        {
+            $que =  " SELECT * FROM game g, product p, console c, accessory a WHERE g.product_id = p.product_id AND c.product_id = p.product_id AND a.product_id = p.product_id";
+        }
+        
+        
+        
+else{
+//$mail =  $_SESSION['login_user'] ;
+$index = "CREATE INDEX g_name ON game (game_name)"; 
+$index2 = "CREATE INDEX c_type ON console (console_type)"; 
+$index3 = "CREATE INDEX a_name ON accessory (accessory_name)"; 
+ 
+$que ="SELECT * FROM product p, game g WHERE  p.product_id = g.product_id  AND game_name LIKE '%$item%'";
+$que2 ="SELECT * FROM console c, product p WHERE c.product_id = p.product_id AND console_type LIKE '%$item%'";
+$que3 ="SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id AND accessory_name LIKE '%$item%'";
+
+
+
+}
+$index1 = mysql_query($index);
+$index22 = mysql_query($index2);
+$index33 = mysql_query($index3);
+$record = mysql_query($que);
+$record2 = mysql_query($que2);
+$record3 = mysql_query($que3);
+
+//echo $record;
+/*if(mysql_num_rows($record) <1) {
+  // got records
+  echo '<br>';
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+  echo '<br>';
+  }
+
+//iterate over all the rows
+if($record === FALSE){
+echo $record;
+
+}*/
+if(mysql_num_rows($record) > 0 ){
 	
-	$user = $_GET['ADD'];
-	$date = date('Y-m-d H:i:s');
-	
-	$query = "SELECT * FROM accessory a, product p, customer c WHERE a.product_id = p.product_id AND p.product_id ='$user' AND c.customer_username = '$username'"; 
- 	$result = mysql_query($query);
-$query2 = "SELECT RIGHT(bank_account,4) FROM customer";
- 	$result2 = mysql_query($query2);	
-	//$query2 = "SELECT RIGHT(bank_account, 4); as account FROM customer where c.customer_username = '$username'";
-	//$q = mysql_query($query2);
-                 if(mysql_num_rows($result) > 0)  
-                {  
-                     while($row = mysql_fetch_array($result))  
-                     {  
-		?> 
+    	
+ while($row = mysql_fetch_array($record)) {
+	 
+ 	   $name = $row['product_name'];
+       $price = $row['product_price']; 
+	   $desc = $row['product_description'];
+	   $platform = $row['platform'];
+     ?>
 			<div class="article">
-			    
-              <div class="image"><?php echo '<img   src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["accessory_name"]; ?></h4>
-              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
- 			  
 			  
+   
+				
+			 <div class="image"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+             <p class="console"><strong>$ <?php echo $price; ?></strong></p>
+			  <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+			 <p class="console"><strong>platform: <?php echo $platform; ?></strong></p>
+			 <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
+            </div>
+			 <?php  
+                     }  
+                }  
                
- 	
+?> 
+	
+<?php 
+if(mysql_num_rows($record2) > 0 ){
+	
+    	
+ while($row = mysql_fetch_array($record2)) {
+	 
+ 	   $name = $row['product_name'];
+       $price = $row['product_price']; 
+  	   $desc = $row['product_description'];
+
+     ?>
+			<div class="article">
+			  
+   
+				
+			 <div class="image"><a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+             <p class="console"><strong>$ <?php echo $price; ?></strong></p>
+			 			 			 <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+									 <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_console.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'edit_console2.php?Delete=$row[console_id]'>Edit</a>" ;?> </p>
 
             </div>
-							<br>
-				 <h2 style="text-indent: 20px;color:darksalmon;font-size:25px;"> <strong>Your shipping Address: </strong></h2>
-			  <h5 class="console" style="text-indent: 20px;;font-size:15px;"><?php echo $row["street_name"]; ?> <?php echo $row["house_number"];?>  , <?php echo $row["city"]; ?> <?php echo $row["zip_code"]; ?>, <?php echo $row["state"]; ?></h5>
-								<h2 style="text-indent: 20px;color:darksalmon;font-size:25px;"> <strong>Your credit and debit cards: </strong></h2>
-								<?php if(mysql_num_rows($result2) > 0){
-									echo '<h5 class="console" style="text-indent: 20px;;font-size:15px;"><b>Account</b> ending in '.substr($row["bank_account"],4).'</h5>';
-								}?> 
-				<?php //if($q)
-	//{?>
-
-				<h4 class="console"><?php //echo $row["bank_account"]; ?> </h4> 
-		<?php //}?> 
-		
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<p style ="text-align:center" ><a class="btn btn-success" href=<?php echo "shopping_thanks.php?ADD=$row[product_id]";?>>Confirm Order</a> 
-			
-
-	<?php
+			 <?php  
+                     }  
+                }  
+               
+?> 
+  <?php 
+if(mysql_num_rows($record3) > 0 ){
 	
-	 }  
-                } 
-  
-} 
-                      
-else 
-{
-echo '<br>';
-echo '<br>';
+    	
+ while($row = mysql_fetch_array($record3)) {
+	 
+ 	   $name = $row['product_name'];
+       $price = $row['product_price']; 
+  	   $desc = $row['product_description'];
 
-echo '<h1 style="text-align:center"> Sorry!! </h1>';
-echo '<br>';
-echo '<br>';
-echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+     ?>
+			<div class="article">
+			  
+   
+				
+			 <div class="image"><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?></a></div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+             <p class="console"><strong>$ <?php echo $price; ?></strong></p>
+			 			 			 <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+									 <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_accessory.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'edit_accessory2.php?Delete=$row[accessory_id]'>Edit</a>" ;?> </p>
 
-echo '<br>';
-echo '<br>';
-
-}			
-	
-                ?>	
+            </div>
+			 <?php  
+                     }  
+                }  
+               
+?> 
+ 
 			
-
-<br><br>		
             <div class="cl">&nbsp;</div>
-		
-
           </div>
         </div>
       </div>
@@ -427,14 +430,15 @@ echo '<br>';
             </form>
           </div>
         </div>
-      </div>
+      </div>              <div class="cl">&nbsp;</div>
+
       <!-- / Search -->
-      <!-- Sign In -->
+   <!-- Sign In -->
 
       <div id="sign" class="block">
       <!-- <div class="cl">&nbsp;</div> --> 
 			<div class="card">
-			  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+			  <img src="img_avatar1.png" alt="Avatar" style="width:100%">
 			  <div class="container">
 				<h3 style = "text-align: center;"><b><?php  echo $_SESSION['login_user'];?></b></h3> 
 				<p align="center"><?php echo "<a href = 'customeredit.php?Edit=$username'>Edit</a>"; ?> 
@@ -447,7 +451,7 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Editor`s Pick</h3>
+              <h3>Games</h3>
             </div>
           </div>
           <div class="image-articles articles">
@@ -531,7 +535,7 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-        <h3>Latest News</h3>
+             <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
@@ -570,15 +574,15 @@ echo '<br>';
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
- 
+           
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+            <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

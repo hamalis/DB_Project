@@ -3,7 +3,7 @@
 session_start();
 if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
       // redirect to your login page
-      exit();
+exit();
 }
 
 $username = $_SESSION['login_user'];
@@ -16,71 +16,11 @@ $username = $_SESSION['login_user'];
 <title>GamePortal</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
 <style>
- element.style {
-}
-.btn {
-    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.btn-danger {
-    color: #ffffff;
-    background-color: #d9534f;
-    border-color: #d9534f;
-}
-.btn-warning {
-    color: #ffffff;
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-}
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 8px 12px;
-    font-size: 16px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-a {
-    color: #4582ec;
-    text-decoration: none;
-}
-a {
-    background-color: transparent;
-}
  
-user agent stylesheet
-a:-webkit-any-link {
-    color: -webkit-link;
-    text-decoration: underline;
-    cursor: auto;
-}
-  
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 4px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
 /* Set a style for all buttons */
 button {
@@ -186,55 +126,9 @@ span.psw {
        width: 100%;
     }
 }
- /* Style the buttons that are used to open and close the accordion panel */
-button.accordion {
-    background-color: transparent;
-    color: #8c8c8c;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.accordion.active, button.accordion:hover {
-    background-color: #ddd;
-}
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
 
-/* Style the accordion panel. Note: hidden by default */
-div.panel {
-  padding: 0 18px;
-    background-color: transparent;
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.6s ease-in-out;
-    opacity: 0;
-}
-
-/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
-div.panel.show {
- opacity: 1;
-    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
-	}
-button.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: #777;
-    float: right;
-    margin-left: 5px;
-}
-
-button.accordion.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
-.btn-success {
-    color: #ffffff;
-    background-color: #3fad46;
-    border-color: #3fad46;
-}
 </style>
 </head>
 <body>
@@ -246,12 +140,12 @@ button.accordion.active:after {
     <div id="top-nav">
       <ul>
         <li class="home"><a href="index1.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li><a  >pc</a></li>
+        <li><a  >xbox</a></li>
+        <li><a  >360</a></li>
+        <li><a  >wii</a></li>
+        <li><a  >ps4</a></li>
+        <li><a  >ps3</a></li>
 		 
         </ul>
     </div>
@@ -307,79 +201,40 @@ button.accordion.active:after {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">  
-              <h3>Confirmation</h3>
-              <div class="cl" >&nbsp;</div>
+              <h3>All Consoles</h3>
+              <div class="cl">&nbsp;</div>
             </div>
           </div>
           <div class="col-articles articles">
- 		  <h1 style="text-align:center; color:yellow"> <strong>Please confirm your order: </strong></h1>
-		<br><br> 
-
             <div class="cl">&nbsp;</div>
             
  			 <?php 
-$localhost = 'localhost';
-$dusername = 'root';
-$dpassword = 'root';
-$database = 'gp';
-$connection = mysql_connect($localhost , $dusername , $dpassword);
-mysql_select_db($database, $connection);
-//if ($connection->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//} 
-
- if (isset($_GET['ADD']))
-{
-	
-	$user = $_GET['ADD'];
-	$date = date('Y-m-d H:i:s');
-	
-	$query = "SELECT * FROM accessory a, product p, customer c WHERE a.product_id = p.product_id AND p.product_id ='$user' AND c.customer_username = '$username'"; 
- 	$result = mysql_query($query);
-$query2 = "SELECT RIGHT(bank_account,4) FROM customer";
- 	$result2 = mysql_query($query2);	
-	//$query2 = "SELECT RIGHT(bank_account, 4); as account FROM customer where c.customer_username = '$username'";
-	//$q = mysql_query($query2);
-                 if(mysql_num_rows($result) > 0)  
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM console c, product p WHERE c.product_id = p.product_id ORDER BY console_id DESC";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
-		?> 
-			<div class="article">
-			    
-              <div class="image"><?php echo '<img   src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["accessory_name"]; ?></h4>
-              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
- 			  
-			  
-               
- 	
-
-            </div>
-							<br>
-				 <h2 style="text-indent: 20px;color:darksalmon;font-size:25px;"> <strong>Your shipping Address: </strong></h2>
-			  <h5 class="console" style="text-indent: 20px;;font-size:15px;"><?php echo $row["street_name"]; ?> <?php echo $row["house_number"];?>  , <?php echo $row["city"]; ?> <?php echo $row["zip_code"]; ?>, <?php echo $row["state"]; ?></h5>
-								<h2 style="text-indent: 20px;color:darksalmon;font-size:25px;"> <strong>Your credit and debit cards: </strong></h2>
-								<?php if(mysql_num_rows($result2) > 0){
-									echo '<h5 class="console" style="text-indent: 20px;;font-size:15px;"><b>Account</b> ending in '.substr($row["bank_account"],4).'</h5>';
-								}?> 
-				<?php //if($q)
-	//{?>
-
-				<h4 class="console"><?php //echo $row["bank_account"]; ?> </h4> 
-		<?php //}?> 
-		
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<p style ="text-align:center" ><a class="btn btn-success" href=<?php echo "shopping_thanks.php?ADD=$row[product_id]";?>>Confirm Order</a> 
-			
-
-	<?php
-	
-	 }  
-                } 
   
-} 
-                      
+	?>	
+			<div class="article">
+			   
+              <div > <a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px" ><a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo $row["console_type"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
 else 
 {
 echo '<br>';
@@ -388,20 +243,17 @@ echo '<br>';
 echo '<h1 style="text-align:center"> Sorry!! </h1>';
 echo '<br>';
 echo '<br>';
-echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+echo '<h1 style="text-align:center"> Consoles will be availabe soon  </h1>';
 
 echo '<br>';
 echo '<br>';
 
-}			
-	
+}				
                 ?>	
 			
-
-<br><br>		
+			
+			
             <div class="cl">&nbsp;</div>
-		
-
           </div>
         </div>
       </div>
@@ -442,7 +294,7 @@ echo '<br>';
 			  </div>
 			</div>
 			</div>
-      <!-- / Sign In -->
+     <!-- / Sign In -->
       <div class="block">
         <div class="block-bot">
           <div class="head">
@@ -489,7 +341,7 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-            <h3>Coming Soon</h3>
+              <h3>Coming Soon</h3>
             </div>
           </div>
           <div class="image-articles articles">
@@ -531,7 +383,7 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-        <h3>Latest News</h3>
+              <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
@@ -570,15 +422,15 @@ echo '<br>';
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
- 
+    
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+            <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

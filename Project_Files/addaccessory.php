@@ -61,12 +61,12 @@
     <div id="top-nav">
       <ul>
         <li class="home"><a href="admin.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+           <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
         </ul>
     </div>
     <!-- / Top Navigation -->
@@ -97,10 +97,10 @@
           <ul>
             <li class="first active first-active"><a href="admin.php">Admin Page</a><span class="sep">&nbsp;</span></li>
             
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
-			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
-			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames3.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames3.php">New Games</a><span class="sep">&nbsp;</span></li>
+			<li><a href="consoles3.php">Consoles</a><span class="sep">&nbsp;</span></li>
+			<li><a href="accessories3.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
@@ -144,7 +144,7 @@
     <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Accessory Name</label>
       <div class="col-lg-10">
-        <input name="Aname" type="text" class="form-control" id="inputEmail" placeholder="Game Name" required autocomplete="off">
+        <input name="Aname" type="text" class="form-control" id="inputEmail" placeholder="Accessory Name" required autocomplete="off">
       </div>
       </div>
 
@@ -187,12 +187,12 @@
    
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+               <li><a  >pc</a></li>
+            <li><a  >xbox</a></li>
+            <li><a  >360</a></li>
+            <li><a  >wii</a></li>
+            <li><a  >ps4</a></li>
+            <li><a  >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

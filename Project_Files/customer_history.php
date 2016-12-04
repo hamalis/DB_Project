@@ -290,7 +290,8 @@ button.accordion.active:after {
 <?php
   		$x = 1; 
 
-                $query = 'SELECT o.customer_username, CONCAT(c.first_name, " " , c.last_name)AS name ,CONCAT(c.street_name, " Apt/House: ", c.house_number," ", c.zip_code," ",c.city,",",c.state) AS address, p.product_name,io.product_id,o.order_id,o.date_of_order FROM product p, orders o, items_ordered io, customer c WHERE o.customer_username = c.customer_username AND io.product_id = p.product_id AND io.order_id = o.order_id ORDER BY o.order_id DESC  ';  
+                $query = ' SELECT * FROM report'; 
+				//'SELECT o.customer_username, CONCAT(c.first_name, " " , c.last_name)AS name ,CONCAT(c.street_name, " Apt/House: ", c.house_number," ", c.zip_code," ",c.city,",",c.state) AS address, p.product_name,io.product_id,o.order_id,o.date_of_order FROM product p, orders o, items_ordered io, customer c WHERE o.customer_username = c.customer_username AND io.product_id = p.product_id AND io.order_id = o.order_id ORDER BY o.order_id DESC  ';  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  

@@ -1,3 +1,5 @@
+ 
+ 
 <?php
 
 $mysql_host = 'localhost';
@@ -15,9 +17,9 @@ else
 
 	$first = mysql_real_escape_string($_POST["fname"]);
 	$last = mysql_real_escape_string($_POST["lname"]);
-	$email = mysql_real_escape_string($_POST["email"]);
+	$email =$_POST["email"];
 	$username = mysql_real_escape_string($_POST["username"]);
-	$password = mysql_real_escape_string($_POST["password"]);
+	$password = $_POST["password"];
 	$question = mysql_real_escape_string($_POST["question"]);
 	$answer = mysql_real_escape_string($_POST["answer"]);
 	$streetname = mysql_real_escape_string($_POST["streetname"]);
@@ -49,3 +51,4 @@ else
 }
  
 ?>
+ 

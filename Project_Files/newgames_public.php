@@ -123,6 +123,9 @@ span.psw {
        width: 100%;
     }
 }
+
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
+
 </style>
 </head>
 <body>
@@ -134,12 +137,12 @@ span.psw {
     <div id="top-nav">
       <ul>
         <li class="home"><a href="index.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li><a >pc</a></li>
+        <li><a >xbox</a></li>
+        <li><a >360</a></li>
+        <li><a >wii</a></li>
+        <li><a >ps4</a></li>
+        <li><a >ps3</a></li>
 	 
         </ul>
     </div>
@@ -211,7 +214,7 @@ span.psw {
 ?>
 <?php
   	
-                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id ORDER BY p.product_id DESC LIMIT 10";  
+                $query = "SELECT * FROM game g, product p GROUP BY g.game_id  DESC LIMIT 8";  
                 $result = mysql_query($query);  
                 if(mysql_num_rows($result) > 0)  
                 {  
@@ -221,9 +224,11 @@ span.psw {
 	?>	
 			<div class="article">
 			   
-              <div class="image"><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["game_name"]; ?></h4>
+              <div ><?php echo '<img height="160" width="130" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:17px"><?php echo $row["game_name"]; ?></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+
             </div>
 			 <?php  
                      }  
@@ -302,7 +307,7 @@ echo '<br>';
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <span class="psw">Forgot <a href="resetPassword.php">password?</a></span>
     </div>
   </form>
 </div>
@@ -319,7 +324,7 @@ window.onclick = function(event) {
 }
 </script>
             <div class="cl">&nbsp;</div>
-            <p class="center">&nbsp;&nbsp;<a href=" ">Forgot Password?</a></p>
+            <p class="center">&nbsp;&nbsp;<a href="resetPassword.php">Forgot Password?</a></p>
           </div>
         </div>
       </div>
@@ -413,32 +418,32 @@ window.onclick = function(event) {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+             <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -455,12 +460,12 @@ window.onclick = function(event) {
             
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+            <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

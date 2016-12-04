@@ -237,6 +237,7 @@ span.psw {
                <h4><?php echo $row["product_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
 			  <p class="console"><strong><?php echo $row["product_description"]; ?></strong></p>
+			  <p class="console"><strong>Order date: <?php echo $row["date_of_order"]; ?></strong></p>
             </div>
 			 <?php  
                      }  
@@ -305,40 +306,40 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Games</h3>
+                            <h3>Games</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/64x64_fifa_ultteam.jpg" alt="" />  </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">TMNT</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>FIFA 17</h4>
+                <p>The Journey will pull you through a true-to-life experience in the Premier League.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/OW.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>OVERWATCH</h4>
+                <p>Overwatch ended the crisis, and helped maintain peace in the decades that followed, inspiring an era of exploration, innovation, and discovery.</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"> <img src="css/images/DHPPLYvIImxKLZa-128x128-noPad.jpg" alt="" /></a> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Steel Fury</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Red Dead Redemption 2</h4>
+                <p>"Listen to me. When the time comes, you gotta run and don't look back. This is over."</p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <a href="allgames2.php" class="view-all">view all</a>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -347,40 +348,40 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Top Videos</h3>
+            <h3>Coming Soon</h3>
             </div>
           </div>
           <div class="image-articles articles">
             <div class="cl">&nbsp;</div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img1.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/3max.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">FALLOUT3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>PS4 FINAL FANTASY XV</h4>
+                <p>PlayStation 4 Slim 1TB FINAL FANTASY XV Limited Edition. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img2.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/129536brp.jpg" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">Crysis</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Sniper Ghost Warrior 3</h4>
+                <p>Sniper Ghost Warrior 3 Limited Edition. Pre-order Sniper Ghost Warrior 3 now and receive the single player campaign "The Escape of Lydia" and two unique weapons skins. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="article">
               <div class="cl">&nbsp;</div>
-              <div class="image"> <a href="http://all-free-download.com/free-website-templates/"><img src="css/images/img3.gif" alt="" /></a> </div>
+              <div class="image"><img src="css/images/dead-rising-4-box-art-555x725.png" alt="" /> </div>
               <div class="cnt">
-                <h4><a href="http://all-free-download.com/free-website-templates/">F.E.A.R.2</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie </p>
+                <h4>Dead Rising 4</h4>
+                <p> The ultimate zombie slayer returns home for the holidays!. Frank West returns in an all-new chapter of one of the most popular zombie game franchises of all time. </p>
               </div>
               <div class="cl">&nbsp;</div>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -389,32 +390,32 @@ echo '<br>';
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+             <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>

@@ -24,7 +24,7 @@ $username = $_SESSION['login_user'];
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 4px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -165,20 +165,21 @@ div.panel {
 /* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
 div.panel.show {
  opacity: 1;
-    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+    max-height: 2500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
 	}
 button.accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
     color: #777;
     float: right;
-    margin-left: 5px;
+    margin-left: 2px;
 }
 
 button.accordion.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
 
 </style>
 </head>
@@ -279,12 +280,12 @@ button.accordion.active:after {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["game_name"]; ?></h4>
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
-			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p class="console"><strong>size: <?php echo $row["size_of_game"]; ?></strong></p>
 			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
-			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = ' '>Edit</a>" ;?> </p>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
             </div>
 			 <?php  
                      }  
@@ -342,12 +343,12 @@ for (i = 0; i < acc.length; i++) {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["game_name"]; ?></h4>
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4  style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
-			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p class="console" ><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
 			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
-			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = ' '>Edit</a>" ;?> </p>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
             </div>
 			 <?php  
                      }  
@@ -383,7 +384,68 @@ for (i = 0; i < acc.length; i++) {
 }
 </script>
 
+<button class="accordion">360</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='360'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4  style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console" ><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
 
+echo '<h1 style="text-align:center"> Sorry!! </h1>';
+echo '<br>';
+echo '<br>';
+echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
 <button class="accordion">PS4</button>
 <div class="panel">  
  			 <?php 
@@ -406,12 +468,136 @@ for (i = 0; i < acc.length; i++) {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><?php echo $row["game_name"]; ?></h4>
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
 			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
 			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
-			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = ' '>Edit</a>" ;?> </p>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+echo '<h1 style="text-align:center"> Sorry!! </h1>';
+echo '<br>';
+echo '<br>';
+echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+<button class="accordion">PS3</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='PS3'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+echo '<h1 style="text-align:center"> Sorry!! </h1>';
+echo '<br>';
+echo '<br>';
+echo '<h1 style="text-align:center"> Games will be availabe soon  </h1>';
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+<button class="accordion">Wii</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='Wii'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <?php echo '<img height="120" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:18px"><?php echo $row["game_name"]; ?></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p align="center"><?php echo "<a style='color:#ff4d4d' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'delete_game.php?Delete=$row[product_id]'>Delete</a>" ;?>
+			  | <?php echo "<a style='color:green' data-confirm='You Sure?' data-method='delete' class='btn btn-danger' href = 'game_edit.php?Delete=$row[game_id]'>Edit</a>" ;?> </p>
             </div>
 			 <?php  
                      }  
@@ -463,10 +649,10 @@ for (i = 0; i < acc.length; i++) {
       <div id="search" class="block">
         <div class="block-bot">
           <div class="block-cnt">
-            <form action="search.php" method="post">
+            <form action="search_admin.php" method="post">
               <div class="cl">&nbsp;</div>
               <div class="fieldplace">
-                <input type="text" class="field" value="Search" title="Search" />
+                <input name="search" id="search"type="text" class="field" value="Search" title="Search" />
               </div>
               <input type="submit" class="button" value="GO" />
               <div class="cl">&nbsp;</div>

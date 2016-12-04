@@ -158,7 +158,7 @@ div.panel {
 /* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
 div.panel.show {
  opacity: 1;
-    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+    max-height: 2500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
 	}
 button.accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
@@ -172,7 +172,9 @@ button.accordion.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-
+#content .col-articles .article { padding: 10px; float: left; display: inline; margin: 17px 0 10px 15px; width: 120px; }
+ 
+ 
 </style>
 </head>
 <body>
@@ -184,12 +186,12 @@ button.accordion.active:after {
     <div id="top-nav">
       <ul>
         <li class="home"><a href="index1.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li><a >pc</a></li>
+        <li><a >xbox</a></li>
+        <li><a >360</a></li>
+        <li><a >wii</a></li>
+        <li><a >ps4</a></li>
+        <li><a >ps3</a></li>
 		 
         </ul>
     </div>
@@ -273,10 +275,10 @@ button.accordion.active:after {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <div  > <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
-			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+			  <p class="console"><strong>size: <?php echo $row["size_of_game"]; ?></strong></p>
             </div>
 			 <?php  
                      }  
@@ -334,8 +336,8 @@ for (i = 0; i < acc.length; i++) {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <div> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
 			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
             </div>
@@ -374,6 +376,66 @@ for (i = 0; i < acc.length; i++) {
 </script>
 
 
+<button class="accordion">360</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='360'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+   
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
 <button class="accordion">PS4</button>
 <div class="panel">  
  			 <?php 
@@ -396,8 +458,131 @@ for (i = 0; i < acc.length; i++) {
 	?>	
 			<div class="article">
 			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
-              <div class="image"> <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="100" width="120" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-              <h4><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <div > <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+   
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+
+<button class="accordion">PS3</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='PS3'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
+              <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
+			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
+            </div>
+			 <?php  
+                     }  
+                } 
+else 
+{
+echo '<br>';
+echo '<br>';
+
+ 
+  echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
+  echo "<h3 style='text-align:center; color:yellow;font-size:15px'> THE ITEM YOU ARE LOOKING FOR DOES NOT EXIST. SORRY :'(</h3>";
+   
+
+echo '<br>';
+echo '<br>';
+
+}				
+                ?>	
+			
+			 </div>
+						  <script>
+// Get the modal
+/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+
+<button class="accordion">Wii</button>
+<div class="panel">  
+ 			 <?php 
+		$localhost = 'localhost';
+		$dusername = 'root';
+		$dpassword = 'root';
+		$database = 'gp';
+		$connect = mysql_connect($localhost , $dusername , $dpassword);
+		mysql_select_db($database, $connect);
+?>
+<?php
+  	
+                $query = "SELECT * FROM game g, product p WHERE g.product_id = p.product_id AND platform ='Wii'";  
+                $result = mysql_query($query);  
+                if(mysql_num_rows($result) > 0)  
+                {  
+                     while($row = mysql_fetch_array($result))  
+                     {  
+  
+	?>	
+			<div class="article">
+			   <?php $product='"purchase_game.php?ADD=$row[product_id]"' ;?>     
+              <div > <a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img height="110" width="90" src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+              <h4 style="font-size:16px"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $row["game_name"]; ?></a></h4>
               <p class="console"><strong>$ <?php echo $row["product_price"]; ?></strong></p>
 			  <p class="console"><strong>Platform: <?php echo $row["platform"]; ?></strong></p>
             </div>
@@ -565,32 +750,32 @@ for (i = 0; i < acc.length; i++) {
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+           <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -607,12 +792,12 @@ for (i = 0; i < acc.length; i++) {
    
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+            <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a >ps3</a></li> 
           </ul>
           <div class="cl">&nbsp;</div>
         </div>

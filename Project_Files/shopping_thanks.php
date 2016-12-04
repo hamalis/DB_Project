@@ -20,6 +20,58 @@ $username = $_SESSION['login_user'];
 <!--[if IE 6]><link rel="stylesheet" href="css/ie6-style.css" type="text/css" media="all" /><![endif]-->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="js/fns.js" type="text/javascript"></script>
+<style> 
+ element.style {
+}
+.btn {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.btn-danger {
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a {
+    color: #4582ec;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+ 
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+  h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 175px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+h2 { color: #e6f2ff; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; }
+
+p { color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 18px; line-height: 12px; margin: 0 0 30px; text-align: center; text-justify: inter-word; }
+ </style>
 </head>
 <body>
 <!-- Page -->
@@ -29,7 +81,7 @@ $username = $_SESSION['login_user'];
     <!-- Top Navigation -->
     <div id="top-nav">
       <ul>
-        <li class="home"><a href="index.html">home</a></li>
+        <li class="home"><a href="index1.php">home</a></li>
         <li><a href="pc.php">pc</a></li>
         <li><a href="xbox.php">xbox</a></li>
         <li><a href="360.php">360</a></li>
@@ -42,7 +94,7 @@ $username = $_SESSION['login_user'];
     <div class="cl">&nbsp;</div>
     <!-- Logo -->
     <div id="logo">
-      <h1><a href="index.html">game<span>portal</span></a></h1>
+      <h1><a href="index1.php">game<span>portal</span></a></h1>
       <p class="description">your game zone</p>
     </div>
     <!-- / Logo -->
@@ -51,14 +103,7 @@ $username = $_SESSION['login_user'];
       <div class="bg-right">
         <div class="bg-left">
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+           
           </ul>
         </div>
       </div>
@@ -71,9 +116,9 @@ $username = $_SESSION['login_user'];
         <div class="bg-left">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li class="first active first-active"><a href="index.html">Review</a><span class="sep">&nbsp;</span></li>
-		    <li><a href="allgames.php">All Games</a><span class="sep">&nbsp;</span></li>
-            <li><a href=" ">New Games</a><span class="sep">&nbsp;</span></li>
+            <li class="first active first-active"><a href="index1.php">Main</a><span class="sep">&nbsp;</span></li>
+		    <li><a href="allgames2.php">All Games</a><span class="sep">&nbsp;</span></li>
+            <li><a href="newgames.php">New Games</a><span class="sep">&nbsp;</span></li>
 			<li><a href="consoles.php">Consoles</a><span class="sep">&nbsp;</span></li>
 			<li><a href="accessories.php">Accessories</a><span class="sep">&nbsp;</span></li>
           </ul>
@@ -128,11 +173,16 @@ mysql_select_db($database, $connection);
 	{
 		if($q2)
 		//header( "location: index1.php" );
-	$db3 = "SELECT * FROM customer WHERE customer_username = '$username' "; 
+	$db3 = "SELECT email_address FROM customer WHERE customer_username = '$username' "; 
 		$q3 = mysql_query($db3);
-		if($q3)           
+		$query_executed=mysql_fetch_assoc($q3);
+		if($query_executed > 0) 
+			
 	{
-	echo '<h1>Thank you for shooping with <a href= "index1.php">Game_Portal</a> Your order confirmation will be sent to your email address</h1>'; 
+		
+	echo '<h1>Thank you</h1>';
+	echo '<h2>Thank you for shooping with <a href= "index1.php">Game_Portal</a> </h2> ';
+    echo '<p style="text-align:center"> Your order confirmation will be sent to your email address : '.$query_executed["email_address"].'</p>'; 
 	}
  	}
  	else
@@ -143,6 +193,8 @@ mysql_select_db($database, $connection);
 }
  ?>
  
+
+
 	
 	  </div>
 	  </br>
@@ -161,14 +213,7 @@ mysql_select_db($database, $connection);
         <div class="navs-bot">
           <div class="cl">&nbsp;</div>
           <ul>
-            <li><a href="http://all-free-download.com/free-website-templates/">community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">forum</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">video</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">cheats</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">features</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">downloads</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">sports</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">tech</a></li>
+            
           </ul>
           <ul>
             <li><a href="pc.php">pc</a></li>
@@ -181,7 +226,7 @@ mysql_select_db($database, $connection);
           <div class="cl">&nbsp;</div>
         </div>
       </div>
-      <p class="copy">&copy; gameportal.com. Design by Salman, Anthony, Dyjung</p>
+      <p class="copy">&copy; gameportal.com. Design by Salman</p>
     </div>
     <!-- / Footer -->
   </div>

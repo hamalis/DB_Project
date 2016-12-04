@@ -191,12 +191,12 @@ button.accordion.active:after {
     <div id="top-nav">
       <ul>
         <li class="home"><a href="index1.php">home</a></li>
-        <li><a href="pc.php">pc</a></li>
-        <li><a href="xbox.php">xbox</a></li>
-        <li><a href="360.php">360</a></li>
-        <li><a href="wii.php">wii</a></li>
-        <li><a href="ps4.php">ps4</a></li>
-        <li><a href="ps3.php">ps3</a></li>
+        <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a>ps3</a></li>
 		 
         </ul>
     </div>
@@ -285,19 +285,27 @@ mysql_select_db($database, $connection);
         
         
 else{
-//$mail =  $_SESSION['login_user'] ; 
-$que ="SELECT *
-FROM product p, game g,console c,accessory a
-WHERE
-p.product_name like '%$item%' AND p.product_id = g.product_id OR 
-p.product_name like '%$item%' AND p.product_id = c.product_id OR 
-p.product_name like '%$item%' AND p.product_id = a.product_id
-GROUP BY p.product_id";
-}
+//$mail =  $_SESSION['login_user'] ;
+$index = "CREATE INDEX g_name ON game (game_name)"; 
+$index2 = "CREATE INDEX c_type ON console (console_type)"; 
+$index3 = "CREATE INDEX a_name ON accessory (accessory_name)"; 
+ 
+$que ="SELECT * FROM product p, game g WHERE  p.product_id = g.product_id  AND game_name LIKE '%$item%'";
+$que2 ="SELECT * FROM console c, product p WHERE c.product_id = p.product_id AND console_type LIKE '%$item%'";
+$que3 ="SELECT * FROM accessory a, product p WHERE a.product_id = p.product_id AND accessory_name LIKE '%$item%'";
 
+
+
+}
+$index1 = mysql_query($index);
+$index22 = mysql_query($index2);
+$index33 = mysql_query($index3);
 $record = mysql_query($que);
+$record2 = mysql_query($que2);
+$record3 = mysql_query($que3);
+
 //echo $record;
-if(mysql_num_rows($record) <1) {
+/*if(mysql_num_rows($record) <1) {
   // got records
   echo '<br>';
   echo "<h1 style='text-align:center;color:yellow;font-size:55px'> YOU JUST GOT 404'D</h1>";
@@ -309,40 +317,85 @@ if(mysql_num_rows($record) <1) {
 if($record === FALSE){
 echo $record;
 
-}
+}*/
 if(mysql_num_rows($record) > 0 ){
 	
     	
  while($row = mysql_fetch_array($record)) {
 	 
-	   $item = $_POST["search"];
-       $image = $row['image'];
  	   $name = $row['product_name'];
        $price = $row['product_price']; 
-	   $id = $row['product_id'];
-	   $game = $row['game_name'];
-	   $console = $row['console_type'];
-	   $accessory = $row['accessory_name'];
-	    
-	   $que11="SELECT image FROM game g, product p WHERE $item = g.game_name AND p.product = g.product_id"; 
-	   $record11 = mysql_query($que11);
+	   $desc = $row['product_description'];
+	   $platform = $row['platform'];
      ?>
 			<div class="article">
 			  
    
 				
-			 <div class="image"><?php if ($record11) echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?> </div>
-             <h4><a style="active:color:white"><a href=<?php if ($name == $game)echo "confirm_order.php?ADD=$row[product_id]";if ($name == $console)echo "confirm_console.php?ADD=$row[product_id]"; if ($name == $accessory)echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+			 <div class="image"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_order.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
              <p class="console"><strong>$ <?php echo $price; ?></strong></p>
-			 
+			  <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+			 <p class="console"><strong>platform: <?php echo $platform; ?></strong></p>
             </div>
 			 <?php  
                      }  
                 }  
                
-?> 	
-			
-  
+?> 
+	
+<?php 
+if(mysql_num_rows($record2) > 0 ){
+	
+    	
+ while($row = mysql_fetch_array($record2)) {
+	 
+ 	   $name = $row['product_name'];
+       $price = $row['product_price']; 
+  	   $desc = $row['product_description'];
+
+     ?>
+			<div class="article">
+			  
+   
+				
+			 <div class="image"><a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?> </div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_console.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+             <p class="console"><strong>$ <?php echo $price; ?></strong></p>
+			 			 			 <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+
+            </div>
+			 <?php  
+                     }  
+                }  
+               
+?> 
+  <?php 
+if(mysql_num_rows($record3) > 0 ){
+	
+    	
+ while($row = mysql_fetch_array($record3)) {
+	 
+ 	   $name = $row['product_name'];
+       $price = $row['product_price']; 
+  	   $desc = $row['product_description'];
+
+     ?>
+			<div class="article">
+			  
+   
+				
+			 <div class="image"><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo '<img  src="data:image;base64,'.$row['image'].' ">'; ?></a></div>
+             <h4><a style="active:color:white"><a href=<?php echo "confirm_accessory.php?ADD=$row[product_id]";?>><?php echo $name; ?></a></h4>
+             <p class="console"><strong>$ <?php echo $price; ?></strong></p>
+			 			 			 <p class="console"><strong>Type: <?php echo $desc; ?></strong></p>
+
+            </div>
+			 <?php  
+                     }  
+                }  
+               
+?> 
  
 			
             <div class="cl">&nbsp;</div>
@@ -476,32 +529,32 @@ if(mysql_num_rows($record) > 0 ){
         <div class="block-bot">
           <div class="head">
             <div class="head-cnt">
-              <h3>Latest Articles</h3>
+             <h3>Latest News</h3>
             </div>
           </div>
           <div class="text-articles articles">
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Dolor amet sodales leo</a></h4>
-              <small class="date">21.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie urna, id scele- risque leo sodales sit amet</p>
+              <h4>Uncharted 4 Co-Op Mode Revealed With New Trailer</h4>
+              <small class="date">November 21, 2016</small>
+              <p>As part of Naughty Dog's ongoing support for Uncharted 4, the developer today announced the game's next feature: co-op. Uncharted 4: Survival, as it's called, is a new wave-based mode where you and up to two others can fight off waves of increasingly difficult enemies. This can also be played solo.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Amet sed lorem sit</a></h4>
-              <small class="date">20.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4>Resident Evil 7's $180 CE Comes With Creepy Music Box, Severed Finger USB Drive</h4>
+              <small class="date">November 21, 2016</small>
+              <p>Resident Evil 7 is getting a GameStop-exclusive collector's edition--and it looks pretty cool. The centerpiece of the $180 bundle is a 8-inch tall Mansion Music Box that plays a sample of the game's theme song, "Aunt Rhody." There are LED effects that are synced up with the music.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Adipsicing elit elementum</a></h4>
-              <small class="date">19.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Sony Confirms Black Friday PSN Sale With a Bizarre Video</h4>
+              <small class="date">November 19, 2016</small>
+              <p>Deals will start on Thursday, at least in Europe. That Sony will offer Black Friday deals on the PlayStation Store this year should come as no real surprise. The way in which it shared that news, though, is a bit odd.</p>
             </div>
             <div class="article">
-              <h4><a href="http://all-free-download.com/free-website-templates/">Consectetur elit sed molestie</a></h4>
-              <small class="date">15.07.09</small>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum molestie.</p>
+              <h4>Xbox Live's Black Friday Sale Begins Tomorrow, Offers 250-Plus Deals</h4>
+              <small class="date">November 17, 2016</small>
+              <p>The Xbox Store's Black Friday sale kicks off tomorrow, November 18, a full week before the real Black Friday, on November 25. Microsoft still hasn't released a full list of the deals for its Black Friday sale, but the company has now put out a new video that teases what to expect from the sale. </p>
             </div>
             <div class="cl">&nbsp;</div>
-            <a href="http://all-free-download.com/free-website-templates/" class="view-all">view all</a>
+            <p class="view-all" style="font-size:1px">.</p>
             <div class="cl">&nbsp;</div>
           </div>
         </div>
@@ -518,12 +571,12 @@ if(mysql_num_rows($record) > 0 ){
            
           </ul>
           <ul>
-            <li><a href="pc.php">pc</a></li>
-            <li><a href="xbox.php">xbox</a></li>
-            <li><a href="360.php">360</a></li>
-            <li><a href="wii.php">wii</a></li>
-            <li><a href="ps4.php">ps4</a></li>
-            <li><a href="ps3.php">ps3</a></li> 
+          <li><a >pc</a></li>
+            <li><a >xbox</a></li>
+            <li><a >360</a></li>
+            <li><a >wii</a></li>
+            <li><a >ps4</a></li>
+            <li><a>ps3</a></li>
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
